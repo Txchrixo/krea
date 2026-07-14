@@ -97,7 +97,7 @@ export function DashboardView() {
     );
   }
 
-  if (!stats) return null;
+  if (!stats || (stats as any).error) return null;
 
   return (
     <div className="bg-background">
@@ -187,7 +187,7 @@ function OverviewTab({ stats }: { stats: DashboardStats }) {
         <KpiCard icon={DollarSign} label="Revenu total" value={formatFCFA(stats.totalRevenue)} trend="+12.4%" up />
         <KpiCard icon={Wallet} label="Solde wallet" value={formatFCFA(stats.walletBalance)} trend="Disponible" up />
         <KpiCard icon={BookOpen} label="Ventes" value={formatNumber(stats.totalSales)} trend="+8 cette semaine" up />
-        <KpiCard icon={Star} label="Note moyenne" value={`${stats.ratingAvg.toFixed(1)} / 5`} trend={`${stats.publishedEbooks} ebooks publiés`} />
+        <KpiCard icon={Star} label="Note moyenne" value={`${(stats.ratingAvg ?? 0).toFixed(1)} / 5`} trend={`${stats.publishedEbooks ?? 0} ebooks publiés`} />
       </div>
 
       {/* Revenue chart */}
@@ -202,7 +202,7 @@ function OverviewTab({ stats }: { stats: DashboardStats }) {
           </Badge>
         </div>
         <ResponsiveContainer width="100%" height={260}>
-          <AreaChart data={stats.monthlyData}>
+          <AreaChart data={stats.monthlyData ?? []}>
             <defs>
               <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#5DBE8A" stopOpacity={0.4} />
@@ -231,7 +231,7 @@ function OverviewTab({ stats }: { stats: DashboardStats }) {
             </Button>
           </div>
           <div className="space-y-3">
-            {stats.topEbooks.slice(0, 4).map((eb, i) => (
+            {(stats.topEbooks ?? []).slice(0, 4).map((eb, i) => (
               <div key={eb.id} className="flex items-center gap-3">
                 <span className="font-heading text-sm font-600 text-muted-foreground">#{i + 1}</span>
                 <div className="h-12 w-9 flex-shrink-0 overflow-hidden rounded">
@@ -255,7 +255,7 @@ function OverviewTab({ stats }: { stats: DashboardStats }) {
             </Button>
           </div>
           <div className="space-y-2">
-            {stats.recentOrders.slice(0, 5).map((o) => (
+            {(stats.recentOrders ?? []).slice(0, 5).map((o) => (
               <div key={o.id} className="flex items-center gap-3 rounded-lg bg-background/60 px-3 py-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-xs font-600 text-primary">
                   {o.buyerName[0]}
@@ -336,12 +336,12 @@ function EbooksTab({ ebooks }: { ebooks: EbookCard[] }) {
                 </td>
                 <td className="px-3">
                   <Badge variant="outline" className={eb.salesCount > 5 ? "border-primary/30 text-primary" : "text-muted-foreground"}>
-                    {eb.salesCount > 5 ? "Publié" : "Publié"}
+                    {(eb as any).status === "PUBLISHED" ? "Publié" : "Brouillon"}
                   </Badge>
                 </td>
                 <td className="px-3 font-500">{formatFCFA(eb.price)}</td>
                 <td className="px-3">{eb.salesCount}</td>
-                <td className="px-3">⭐ {eb.ratingAvg.toFixed(1)}</td>
+                <td className="px-3">⭐ {(eb.ratingAvg ?? 0).toFixed(1)}</td>
                 <td className="pl-3 text-right">
                   <Button variant="ghost" size="sm" onClick={() => setView({ name: "editor", ebookId: eb.slug })}>
                     <PenLine className="h-3.5 w-3.5" /> Éditer
@@ -370,7 +370,7 @@ function SalesTab({ stats }: { stats: DashboardStats }) {
           </Button>
         </div>
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={stats.monthlyData}>
+          <BarChart data={stats.monthlyData ?? []}>
             <CartesianGrid strokeDasharray="3 3" stroke="#CBD8CE" strokeOpacity={0.4} />
             <XAxis dataKey="month" stroke="#697E6E" fontSize={12} tickLine={false} axisLine={false} />
             <YAxis stroke="#697E6E" fontSize={12} tickLine={false} axisLine={false} />
@@ -396,7 +396,7 @@ function SalesTab({ stats }: { stats: DashboardStats }) {
               </tr>
             </thead>
             <tbody>
-              {stats.recentOrders.map((o) => (
+              {(stats.recentOrders ?? []).map((o) => (
                 <tr key={o.id} className="border-b border-border/50">
                   <td className="py-2.5 pr-3 font-mono text-xs text-muted-foreground">{o.ref}</td>
                   <td className="px-3 font-500">{o.buyerName}</td>
@@ -420,10 +420,10 @@ function SalesTab({ stats }: { stats: DashboardStats }) {
 /* ─── ANALYTICS ─── */
 function AnalyticsTab({ stats }: { stats: DashboardStats }) {
   const insights = [
-    { label: "Taux de conversion", value: `${stats.conversionRate.toFixed(1)}%`, icon: TrendingUp, desc: "Visiteurs → acheteurs" },
-    { label: "Panier moyen", value: stats.totalSales > 0 ? formatFCFA(Math.round(stats.totalRevenue / stats.totalSales)) : "—", icon: DollarSign, desc: "Par commande" },
+    { label: "Taux de conversion", value: `${(stats.conversionRate ?? 0).toFixed(1)}%`, icon: TrendingUp, desc: "Visiteurs → acheteurs" },
+    { label: "Panier moyen", value: stats.totalSales > 0 ? formatFCFA(Math.round((stats.totalRevenue ?? 0) / stats.totalSales)) : "—", icon: DollarSign, desc: "Par commande" },
     { label: "Ebooks publiés", value: String(stats.publishedEbooks), icon: BookOpen, desc: `sur ${stats.totalEbooks} créés` },
-    { label: "Note moyenne", value: `${stats.ratingAvg.toFixed(1)} / 5`, icon: Star, desc: "Tous ebooks confondus" },
+    { label: "Note moyenne", value: `${(stats.ratingAvg ?? 0).toFixed(1)} / 5`, icon: Star, desc: "Tous ebooks confondus" },
   ];
   return (
     <div className="space-y-4">
@@ -443,8 +443,8 @@ function AnalyticsTab({ stats }: { stats: DashboardStats }) {
       <Card className="p-5">
         <h3 className="mb-4 font-heading text-lg font-600">Performance par ebook</h3>
         <div className="space-y-3">
-          {stats.topEbooks.map((eb, i) => {
-            const max = stats.topEbooks[0]?.sales || 1;
+          {(stats.topEbooks ?? []).map((eb, i) => {
+            const max = stats.topEbooks?.[0]?.sales || 1;
             const pct = (eb.sales / max) * 100;
             return (
               <div key={eb.id}>

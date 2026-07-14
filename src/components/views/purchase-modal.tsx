@@ -256,7 +256,7 @@ export function PurchaseModal() {
           )}
 
           {step === "phone" && (
-            <motion.div key="phone" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 0, x: 0 }} exit={{ opacity: 0 }}>
+            <motion.div key="phone" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}>
               <DialogHeader className="px-6 pt-6">
                 <DialogTitle className="font-heading text-xl">Numéro {PAYMENT_METHODS.find((m) => m.id === method)?.label}</DialogTitle>
                 <DialogDescription>
@@ -282,15 +282,21 @@ export function PurchaseModal() {
                   <div className="mt-1.5 space-y-1 text-xs text-muted-foreground">
                     <div className="flex justify-between">
                       <span>Ebook</span>
-                      <span className="text-foreground">{ebook ? formatFCFA(ebook.price) : "—"}</span>
+                      <span className="text-foreground">{ebook ? formatFCFA(finalPrice) : "—"}</span>
                     </div>
+                    {appliedCoupon && (
+                      <div className="flex justify-between text-primary">
+                        <span>Coupon (-{appliedCoupon.percentOff}%)</span>
+                        <span>-{formatFCFA(ebook ? ebook.price - finalPrice : 0)}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between">
                       <span>Frais de traitement</span>
                       <span className="text-foreground">{formatFCFA(0)}</span>
                     </div>
                     <div className="mt-1 flex justify-between border-t border-border pt-1.5">
                       <span className="font-600 text-foreground">Total</span>
-                      <span className="font-heading font-600 text-foreground">{ebook ? formatFCFA(ebook.price) : "—"}</span>
+                      <span className="font-heading font-600 text-foreground">{ebook ? formatFCFA(finalPrice) : "—"}</span>
                     </div>
                   </div>
                 </div>
@@ -306,7 +312,7 @@ export function PurchaseModal() {
                   Retour
                 </Button>
                 <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90" onClick={pay}>
-                  Payer {ebook ? formatFCFA(ebook.price) : ""}
+                  Payer {ebook ? formatFCFA(finalPrice) : ""}
                 </Button>
               </div>
             </motion.div>

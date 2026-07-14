@@ -26,6 +26,7 @@ import { CreatorSiteView } from "./views/creator-site";
 import { AuthView } from "./views/auth-view";
 import { ScrollToTop } from "./scroll-to-top";
 import { PageFrame } from "./page-frame";
+import { NavigationProgress } from "./navigation-progress";
 
 export function AppShell() {
   const { view, user, loadingUser, openAuth } = useApp();
@@ -93,6 +94,7 @@ export function AppShell() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <NavigationProgress />
       {showChrome && <Nav floating={isLanding} />}
       {showChrome && <PageFrame />}
       <main className="flex-1">

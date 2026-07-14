@@ -79,7 +79,6 @@ export function SiteTab() {
   const save = async (patch?: Partial<SiteConfig>) => {
     if (!data) return;
     setSaving(true);
-    const payload = patch ?? data.site;
     const res = await fetch("/api/creator/site", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -89,7 +88,6 @@ export function SiteTab() {
     setSaving(false);
     if (d.error) toast.error(d.error);
     else toast.success("Site mis à jour ✓");
-    void payload;
   };
 
   if (loading) {

@@ -90,10 +90,7 @@ export function PricingView() {
           <div className="absolute right-0 top-10 h-60 w-60 rounded-full bg-accent/15 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <Badge className="border-primary/30 bg-primary/10 text-foreground hover:bg-primary/10">
-            <Sparkles className="mr-1.5 h-3.5 w-3.5 text-primary" /> Tarifs transparents
-          </Badge>
-          <h1 className="mt-4 font-heading text-4xl font-600 leading-tight text-foreground sm:text-5xl">
+          <h1 className="font-heading text-4xl font-600 leading-tight text-foreground sm:text-5xl">
             Payez quand vous gagnez
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">

@@ -50,7 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       >
         {/*
           Boot loader — injected as raw HTML string (not a React component).
-          This ensures the SVG + SMIL animation is in the HTML stream
+          This ensures the SVG + animation is in the HTML stream
           BEFORE React hydrates, so the animation starts on first paint.
         */}
         <div
@@ -67,11 +67,28 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
           dangerouslySetInnerHTML={{ __html: KREA_LOADER_SVG }}
         />
+        {/* While boot-loader is visible, lock scroll so the page isn't scrollable behind it.
+            The lock is removed by AppShell when booted = true. */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          body:has(#boot-loader) { overflow: hidden !important; }
+        `}} />
         <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
           {children}
         </Suspense>
         <Toaster />
-        <SonnerToaster richColors position="top-center" />
+        <SonnerToaster
+          richColors
+          position="top-center"
+          toastOptions={{
+            style: {
+              marginTop: "0px",
+            },
+          }}
+          style={{
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        />
       </body>
     </html>
   );

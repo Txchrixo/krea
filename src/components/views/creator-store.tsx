@@ -91,7 +91,7 @@ export function CreatorStoreView() {
         <div className="-mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:gap-6">
           <Avatar className="h-32 w-32 flex-shrink-0 border-4 border-background shadow-xl">
             <AvatarFallback className="text-4xl font-heading text-white" style={{ background: creator.bannerColor || "#1F4A2E" }}>
-              {creator.displayName[0]}
+              {(creator.displayName || "?")[0]}
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 sm:pb-1">
@@ -150,12 +150,12 @@ export function CreatorStoreView() {
                         </div>
                         <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">{b.description}</p>
                         <div className="mt-2 flex flex-wrap gap-1">
-                          {b.ebooks.slice(0, 3).map((eb) => (
+                          {(b.ebooks ?? []).slice(0, 3).map((eb) => (
                             <Badge key={eb.id} variant="outline" className="h-5 text-[9px] text-foreground/60">
                               {eb.title.length > 20 ? eb.title.slice(0, 20) + "…" : eb.title}
                             </Badge>
                           ))}
-                          {b.ebooks.length > 3 && <Badge variant="outline" className="h-5 text-[9px] text-muted-foreground">+{b.ebooks.length - 3}</Badge>}
+                          {(b.ebooks ?? []).length > 3 && <Badge variant="outline" className="h-5 text-[9px] text-muted-foreground">+{(b.ebooks ?? []).length - 3}</Badge>}
                         </div>
                         <div className="mt-2 flex items-center justify-between">
                           <div className="flex items-baseline gap-1.5">

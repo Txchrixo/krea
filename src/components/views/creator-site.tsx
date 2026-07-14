@@ -250,7 +250,7 @@ function SiteHome({
   onGoBook: (slug: string) => void;
   onGoBooks: () => void;
 }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   const layout = data.site.siteLayout;
   const hero = data.site.siteHero || data.creator.tagline || `Bienvenue sur ${data.site.siteName || data.creator.displayName}`;
   const heroSub = data.site.siteHeroSub || data.creator.bio;
@@ -503,7 +503,7 @@ function SiteHome({
 
 /* ════════════════════════ BOOKS LIST ════════════════════════ */
 function SiteBooks({ data, onGoBook }: { data: CreatorSiteData; onGoBook: (slug: string) => void }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   return (
     <div className="site-body mx-auto max-w-5xl px-4 py-12 sm:px-6">
       <p className="text-xs font-600 uppercase tracking-wider" style={{ color: theme.primary }}>Bibliothèque</p>
@@ -546,7 +546,7 @@ function SiteBookDetail({
   onRead: (id: string) => void;
   owned: boolean;
 }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   const ebook = data.ebooks.find((e) => e.slug === bookSlug);
   if (!ebook) {
     return (
@@ -705,7 +705,7 @@ function SiteBookDetail({
 
 /* ════════════════════════ ABOUT ════════════════════════ */
 function SiteAbout({ data }: { data: CreatorSiteData }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   return (
     <div className="site-body">
       <section className="relative overflow-hidden py-16" style={{ background: data.creator.bannerColor }}>
@@ -740,7 +740,7 @@ function SiteAbout({ data }: { data: CreatorSiteData }) {
 
 /* ════════════════════════ CONTACT ════════════════════════ */
 function SiteContact({ data }: { data: CreatorSiteData }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   const social = data.site.siteSocial;
   const entries = Object.entries(social).filter(([, v]) => v);
   return (
@@ -834,7 +834,7 @@ function SocialLink({
 
 /* ════════════════════════ CUSTOM PAGE ════════════════════════ */
 function SiteCustomPage({ data, pageSlug }: { data: CreatorSiteData; pageSlug: string }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   const page = data.pages.find((p) => p.slug === pageSlug);
   if (!page) {
     return (
@@ -865,7 +865,7 @@ function SiteFooter({
   onNav: (p: string) => void;
   onHome: () => void;
 }) {
-  const theme = THEMES[data.site.siteThemePreset];
+  const theme = THEMES[data.site.siteThemePreset] ?? THEMES.foret;
   const social = data.site.siteSocial;
   const footerText = data.site.siteFooterText || `© ${new Date().getFullYear()} ${data.site.siteName || data.creator.displayName}`;
   const socialEntries = Object.entries(social).filter(([, v]) => v);

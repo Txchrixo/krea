@@ -288,7 +288,8 @@ export function ReaderView() {
 
   if (!data) return null;
 
-  const chapter = data.chapters[chapterIdx];
+  const chapter = data.chapters?.[chapterIdx];
+  if (!chapter) return null;
   const themeBg = theme === "light" ? "#FBF5E3" : theme === "dark" ? "#122818" : "#F3ECD4";
   const themeFg = theme === "dark" ? "#FBF5E3" : "#1F4A2E";
   const themeMuted = theme === "dark" ? "rgba(251,245,227,0.6)" : "#697E6E";

@@ -55,6 +55,7 @@ export interface EbookCard {
   salesCount: number;
   pageCount: number;
   isBestseller: boolean;
+  status?: string;
   featured: boolean;
   creator: {
     slug: string;

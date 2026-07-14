@@ -19,7 +19,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { Check as CheckIcon, ChevronsUpDown, Globe } from "lucide-react";
+import { Check as CheckIcon, ChevronsUpDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import {
@@ -116,7 +116,7 @@ export function AuthView() {
         if (!res.ok) throw new Error(data.error || t("auth.toast.invalid"));
         await refreshUser();
         toast.success(`${t("auth.toast.welcome")}, ${data.user?.name ?? data.user?.email} 👋`);
-        setView({ name: "landing" });
+        setView(data.user?.role === "CREATOR" || data.user?.role === "ADMIN" ? { name: "dashboard" } : { name: "landing" });
       } else {
         const res = await fetch("/api/auth/register", {
           method: "POST",

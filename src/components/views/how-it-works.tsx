@@ -51,10 +51,7 @@ export function HowItWorksView() {
           <div className="absolute -left-20 top-0 h-60 w-60 rounded-full bg-primary/20 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <Badge className="border-primary/30 bg-primary/10 text-foreground hover:bg-primary/10">
-            <BookOpen className="mr-1.5 h-3.5 w-3.5 text-primary" /> Comment ça marche
-          </Badge>
-          <h1 className="mt-4 font-heading text-4xl font-600 leading-tight text-foreground sm:text-5xl">
+          <h1 className="font-heading text-4xl font-600 leading-tight text-foreground sm:text-5xl">
             De l'idée à la vente en 6 étapes
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">
@@ -106,10 +103,7 @@ export function HowItWorksView() {
       <div className="bg-card/40 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Badge className="border-primary/30 bg-primary/10 text-foreground hover:bg-primary/10">
-              <Sparkles className="mr-1.5 h-3.5 w-3.5 text-primary" /> Pourquoi Krea
-            </Badge>
-            <h2 className="mt-3 font-heading text-3xl font-600 text-foreground">La différence Krea</h2>
+            <h2 className="font-heading text-3xl font-600 text-foreground">La différence Krea</h2>
             <p className="mt-2 text-muted-foreground">Tout en une plateforme. Pas de PDF téléchargeable nu, pas de retrait en 5 jours.</p>
           </div>
           <Card className="mt-8 overflow-hidden p-0">

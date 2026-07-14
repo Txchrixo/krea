@@ -140,10 +140,7 @@ export function AdminView() {
     <div className="bg-background">
       <div className="border-b border-border bg-card/60">
         <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-          <Badge className="border-primary/30 bg-primary/10 text-foreground hover:bg-primary/10">
-            <ShieldCheck className="mr-1.5 h-3.5 w-3.5 text-primary" /> Panel administrateur
-          </Badge>
-          <h1 className="mt-2 font-heading text-2xl font-600 text-foreground sm:text-3xl">Vue d'ensemble de la plateforme</h1>
+          <h1 className="font-heading text-2xl font-600 text-foreground sm:text-3xl">Vue d'ensemble de la plateforme</h1>
         </div>
       </div>
 
@@ -287,7 +284,7 @@ export function AdminView() {
                 {ebooks.map((eb) => (
                   <tr key={eb.id} className="border-b border-border/50">
                     <td className="py-2.5 pr-3 font-500">{eb.title}</td>
-                    <td className="px-3 text-muted-foreground">{eb.creator.displayName}</td>
+                    <td className="px-3 text-muted-foreground">{eb.creator?.displayName ?? "—"}</td>
                     <td className="px-3">{formatFCFA(eb.price)}</td>
                     <td className="px-3">{eb.salesCount}</td>
                     <td className="px-3"><Badge variant="outline" className="text-muted-foreground">{eb.status}</Badge></td>

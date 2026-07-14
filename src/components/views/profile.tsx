@@ -157,7 +157,7 @@ export function ProfileView() {
         {/* Quick stats for creators */}
         {isCreator && profile.creator && (
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatBox icon={BookOpen} label="Ebooks" value={String(profile.creator.totalSales > 0 ? "—" : "0")} />
+            <StatBox icon={BookOpen} label="Ebooks" value={String(profile.creator.totalEbooks ?? 0)} />
             <StatBox icon={TrendingUp} label="Ventes" value={String(profile.creator.totalSales)} />
             <StatBox icon={Wallet} label="Revenus" value={formatFCFA(profile.creator.totalRevenue)} />
             <StatBox icon={Wallet} label="Solde" value={formatFCFA(profile.creator.walletBalance)} />
