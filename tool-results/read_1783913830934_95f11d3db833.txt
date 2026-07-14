@@ -1,0 +1,477 @@
+     1→   260→          <p className="font-heading text-sm font-600 leading-tight text-white">{title}</p>
+     2→   261→          <p className="mt-1 text-[10px] uppercase tracking-wider text-white/60">{author}</p>
+     3→   262→          {accent && <div className="mt-2 h-1 w-10 rounded-full bg-accent" />}
+     4→   263→        </div>
+     5→   264→      </div>
+     6→   265→    </div>
+     7→   266→  );
+     8→   267→}
+     9→   268→
+    10→   269→/* ───────────────────────── MARQUEE ───────────────────────── */
+    11→   270→function MarqueeSection() {
+    12→   271→  const items = [
+    13→   272→    "Mobile Money", "Orange Money", "Wave", "MTN MoMo",
+    14→   273→    "Watermark social", "Lecteur sécurisé", "Wallet créateur",
+    15→   274→    "Marketplace francophone", "Pages de vente", "Affiliation",
+    16→   275→    "Retraits CFA", "Éditeur intégré",
+    17→   276→  ];
+    18→   277→  const doubled = [...items, ...items];
+    19→   278→  return (
+    20→   279→    <section className="border-y border-border bg-card/50 py-5">
+    21→   280→      <div className="relative overflow-hidden">
+    22→   281→        <div className="flex w-max animate-marquee gap-8">
+    23→   282→          {doubled.map((item, i) => (
+    24→   283→            <span key={i} className="flex items-center gap-2 whitespace-nowrap text-sm font-500 text-foreground/60">
+    25→   284→              <Sparkles className="h-3.5 w-3.5 text-primary/60" />
+    26→   285→              {item}
+    27→   286→            </span>
+    28→   287→          ))}
+    29→   288→        </div>
+    30→   289→        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-card/80 to-transparent" />
+    31→   290→        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-card/80 to-transparent" />
+    32→   291→      </div>
+    33→   292→    </section>
+    34→   293→  );
+    35→   294→}
+    36→   295→
+    37→   296→/* ───────────────────────── STATS BAR ───────────────────────── */
+    38→   297→function StatsBar() {
+    39→   298→  const stats = [
+    40→   299→    { value: "12 400+", label: "Ebooks publiés", icon: BookOpen },
+    41→   300→    { value: "3 200+", label: "Créateurs actifs", icon: Users },
+    42→   301→    { value: "184 M", label: "FCFA reversés", icon: Wallet },
+    43→   302→    { value: "97%", label: "Taux de satisfaction", icon: Star },
+    44→   303→  ];
+    45→   304→  return (
+    46→   305→    <section className="border-b border-border bg-background py-12">
+    47→   306→      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 sm:px-6 lg:grid-cols-4 lg:px-8">
+    48→   307→        {stats.map((s, i) => (
+    49→   308→          <motion.div
+    50→   309→            key={s.label}
+    51→   310→            initial={{ opacity: 0, y: 20 }}
+    52→   311→            whileInView={{ opacity: 1, y: 0 }}
+    53→   312→            viewport={{ once: true }}
+    54→   313→            transition={{ duration: 0.5, delay: i * 0.08 }}
+    55→   314→            className="flex items-center gap-3"
+    56→   315→          >
+    57→   316→            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-card">
+    58→   317→              <s.icon className="h-5 w-5 text-primary" />
+    59→   318→            </div>
+    60→   319→            <div>
+    61→   320→              <div className="font-heading text-2xl font-600 text-foreground">{s.value}</div>
+    62→   321→              <div className="text-xs text-muted-foreground">{s.label}</div>
+    63→   322→            </div>
+    64→   323→          </motion.div>
+    65→   324→        ))}
+    66→   325→      </div>
+    67→   326→    </section>
+    68→   327→  );
+    69→   328→}
+    70→   329→
+    71→   330→/* ───────────────────────── 3 PILLARS ───────────────────────── */
+    72→   331→function PillarsSection() {
+    73→   332→  const pillars = [
+    74→   333→    {
+    75→   334→      icon: PenLine, tag: "01 · Créez",
+    76→   335→      title: "Un éditeur d'ebook pensé pour le mobile",
+    77→   336→      desc: "Écrivez chapitre par chapitre, importez votre texte, générez une couverture. Aucune compétence technique requise — juste votre savoir.",
+    78→   337→      points: ["Éditeur Markdown enrichi", "Couverture générée automatiquement", "Templates de mise en page", "Brouillons sauvegardés"],
+    79→   338→      color: "#5DBE8A",
+    80→   339→    },
+    81→   340→    {
+    82→   341→      icon: Wallet, tag: "02 · Vendez",
+    83→   342→      title: "Encaissez par Mobile Money, partout en Afrique",
+    84→   343→      desc: "MTN, Orange, Wave, carte bancaire. L'argent arrive dans votre wallet Krea. Vous retirez quand vous voulez, en FCFA.",
+    85→   344→      points: ["Page de vente personnalisée", "Coupons & codes promo", "Affiliation automatique", "Retrait dès 10 000 F"],
+    86→   345→      color: "#FFD86B",
+    87→   346→    },
+    88→   347→    {
+    89→   348→      icon: ShieldCheck, tag: "03 · Protégez",
+    90→   349→      title: "Chaque page porte le nom de l'acheteur",
+    91→   350→      desc: "Le PDF téléchargeable est « aplati » : le watermark est incrusté dans les pixels. Le partager, c'est se dénoncer soi-même.",
+    92→   351→      points: ["Watermark visible + invisible", "Lecteur web sécurisé", "Limite d'appareils", "Traçabilité des sessions"],
+    93→   352→      color: "#C8553D",
+    94→   353→    },
+    95→   354→  ];
+    96→   355→  return (
+    97→   356→    <section className="py-20 sm:py-28">
+    98→   357→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    99→   358→        <SectionHeading eyebrow="Trois piliers, une plateforme" title="Krea n'est pas juste un lien de téléchargement" subtitle="Création, vente, lecture protégée. Tout est intégré, pensé pour les créateurs africains qui vendent du savoir." />
+   100→   359→        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+   101→   360→          {pillars.map((p, i) => (
+   102→   361→            <motion.div key={p.tag} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, delay: i * 0.12 }} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition-shadow hover:shadow-xl">
+   103→   362→              <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-10 blur-2xl transition-opacity group-hover:opacity-20" style={{ background: p.color }} />
+   104→   363→              <div className="relative">
+   105→   364→                <div className="flex h-12 w-12 items-center justify-center rounded-xl shadow-sm" style={{ background: p.color + "22" }}>
+   106→   365→                  <p.icon className="h-6 w-6" style={{ color: p.color }} />
+   107→   366→                </div>
+   108→   367→                <p className="mt-4 text-xs font-600 uppercase tracking-wider text-muted-foreground">{p.tag}</p>
+   109→   368→                <h3 className="mt-1 font-heading text-xl font-600 leading-snug text-foreground">{p.title}</h3>
+   110→   369→                <p className="mt-2 text-sm text-muted-foreground text-pretty">{p.desc}</p>
+   111→   370→                <ul className="mt-5 space-y-2">
+   112→   371→                  {p.points.map((pt) => (
+   113→   372→                    <li key={pt} className="flex items-center gap-2 text-sm text-foreground/80">
+   114→   373→                      <Check className="h-4 w-4 flex-shrink-0" style={{ color: p.color }} />
+   115→   374→                      {pt}
+   116→   375→                    </li>
+   117→   376→                  ))}
+   118→   377→                </ul>
+   119→   378→              </div>
+   120→   379→            </motion.div>
+   121→   380→          ))}
+   122→   381→        </div>
+   123→   382→      </div>
+   124→   383→    </section>
+   125→   384→  );
+   126→   385→}
+   127→   386→
+   128→   387→function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
+   129→   388→  return (
+   130→   389→    <div className="mx-auto max-w-2xl text-center">
+   131→   390→      <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-600 uppercase tracking-wider text-primary">
+   132→   391→        {eyebrow}
+   133→   392→      </motion.span>
+   134→   393→      <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mt-4 font-heading text-3xl font-600 leading-tight text-foreground text-balance sm:text-4xl">
+   135→   394→        {title}
+   136→   395→      </motion.h2>
+   137→   396→      {subtitle && (
+   138→   397→        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mt-3 text-base text-muted-foreground text-pretty">
+   139→   398→          {subtitle}
+   140→   399→        </motion.p>
+   141→   400→      )}
+   142→   401→    </div>
+   143→   402→  );
+   144→   403→}
+   145→   404→
+   146→   405→/* ───────────────────────── HOW IT WORKS ───────────────────────── */
+   147→   406→function HowItWorksSection() {
+   148→   407→  const { openAuth } = useApp();
+   149→   408→  const steps = [
+   150→   409→    { n: "1", title: "Créez votre compte créateur", desc: "Inscription gratuite. Vous obtenez votre page de librairie : krea.com/votre-nom.", icon: Users },
+   151→   410→    { n: "2", title: "Écrivez ou importez votre ebook", desc: "Chapitre par chapitre dans l'éditeur. Ajoutez prix, couverture, description.", icon: PenLine },
+   152→   411→    { n: "3", title: "Partagez votre page de vente", desc: "Un lien unique, optimisé pour le mobile 3G. Vos clients paient par Mobile Money.", icon: Smartphone },
+   153→   412→    { n: "4", title: "Encaissez dans votre wallet", desc: "L'argent arrive instantanément. Retirez sur MTN/Orange/Wave dès 10 000 F.", icon: Wallet },
+   154→   413→  ];
+   155→   414→  return (
+   156→   415→    <section className="bg-card/40 py-20 sm:py-28">
+   157→   416→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   158→   417→        <SectionHeading eyebrow="Comment ça marche" title="De l'idée à la vente en 4 étapes" subtitle="Pensé pour que vous passiez moins de temps sur la technique et plus de temps à créer." />
+   159→   418→        <div className="relative mt-14">
+   160→   419→          <div className="absolute left-0 right-0 top-7 hidden h-px bg-border lg:block" />
+   161→   420→          <div className="grid gap-8 lg:grid-cols-4">
+   162→   421→            {steps.map((s, i) => (
+   163→   422→              <motion.div key={s.n} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="relative">
+   164→   423→                <div className="relative z-10 mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary bg-background font-heading text-lg font-600 text-primary shadow-sm">
+   165→   424→                  {s.n}
+   166→   425→                </div>
+   167→   426→                <div className="mt-5 text-center">
+   168→   427→                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+   169→   428→                    <s.icon className="h-5 w-5 text-primary" />
+   170→   429→                  </div>
+   171→   430→                  <h3 className="font-heading text-base font-600 text-foreground">{s.title}</h3>
+   172→   431→                  <p className="mt-1.5 text-sm text-muted-foreground text-pretty">{s.desc}</p>
+   173→   432→                </div>
+   174→   433→              </motion.div>
+   175→   434→            ))}
+   176→   435→          </div>
+   177→   436→        </div>
+   178→   437→        <div className="mt-12 text-center">
+   179→   438→          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={() => openAuth("register-creator")}>
+   180→   439→            Commencer gratuitement
+   181→   440→            <ArrowRight className="ml-2 h-4 w-4" />
+   182→   441→          </Button>
+   183→   442→        </div>
+   184→   443→      </div>
+   185→   444→    </section>
+   186→   445→  );
+   187→   446→}
+   188→   447→
+   189→   448→/* ───────────────────────── FEATURED EBOOKS ───────────────────────── */
+   190→   449→function FeaturedEbooksSection() {
+   191→   450→  const { setView } = useApp();
+   192→   451→  const [ebooks, setEbooks] = useState<EbookCard[]>([]);
+   193→   452→  const [loading, setLoading] = useState(true);
+   194→   453→
+   195→   454→  useEffect(() => {
+   196→   455→    fetch("/api/ebooks?limit=8&sort=popular")
+   197→   456→      .then((r) => r.json())
+   198→   457→      .then((d) => setEbooks(d.items || []))
+   199→   458→      .finally(() => setLoading(false));
+   200→   459→  }, []);
+   201→   460→
+   202→   461→  return (
+   203→   462→    <section className="py-20 sm:py-28">
+   204→   463→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   205→   464→        <div className="flex items-end justify-between gap-4">
+   206→   465→          <div>
+   207→   466→            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-600 uppercase tracking-wider text-primary">Trending</span>
+   208→   467→            <h2 className="mt-3 font-heading text-3xl font-600 leading-tight text-foreground sm:text-4xl">Les ebooks qui se vendent maintenant</h2>
+   209→   468→          </div>
+   210→   469→          <Button variant="outline" className="hidden sm:inline-flex" onClick={() => setView({ name: "marketplace" })}>
+   211→   470→            Voir tout
+   212→   471→            <ChevronRight className="ml-1 h-4 w-4" />
+   213→   472→          </Button>
+   214→   473→        </div>
+   215→   474→
+   216→   475→        {loading ? (
+   217→   476→          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+   218→   477→            {Array.from({ length: 8 }).map((_, i) => (
+   219→   478→              <div key={i} className="space-y-3">
+   220→   479→                <div className="h-56 animate-pulse rounded-lg bg-muted" />
+   221→   480→                <div className="h-3 w-2/3 animate-pulse rounded bg-muted" />
+   222→   481→                <div className="h-3 w-1/3 animate-pulse rounded bg-muted" />
+   223→   482→              </div>
+   224→   483→            ))}
+   225→   484→          </div>
+   226→   485→        ) : (
+   227→   486→          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+   228→   487→            {ebooks.map((eb) => (
+   229→   488→              <EbookCardView key={eb.id} ebook={eb} />
+   230→   489→            ))}
+   231→   490→          </div>
+   232→   491→        )}
+   233→   492→        <div className="mt-8 text-center sm:hidden">
+   234→   493→          <Button variant="outline" onClick={() => setView({ name: "marketplace" })}>Voir toute la marketplace</Button>
+   235→   494→        </div>
+   236→   495→      </div>
+   237→   496→    </section>
+   238→   497→  );
+   239→   498→}
+   240→   499→
+   241→   500→/* ───────────────────────── PROTECTION ───────────────────────── */
+   242→   501→function ProtectionSection() {
+   243→   502→  const layers = [
+   244→   503→    { icon: Fingerprint, title: "Watermark social", desc: "Nom, email et n° de téléphone de l'acheteur incrustés sur chaque page." },
+   245→   504→    { icon: Lock, title: "Aplatissement (flatten)", desc: "Chaque page devient une image. Le watermark ne peut plus être sélectionné." },
+   246→   505→    { icon: Eye, title: "Stéganographie", desc: "Un watermark invisible dans les métadonnées et les micro-espaces du texte." },
+   247→   506→    { icon: Smartphone, title: "Limite d'appareils", desc: "1 licence = 3 appareils max. Le partage de compte est détecté et suspendu." },
+   248→   507→  ];
+   249→   508→  return (
+   250→   509→    <section className="relative overflow-hidden bg-[#1F4A2E] py-20 sm:py-28" style={{ color: "#FBF5E3" }}>
+   251→   510→      <div className="pointer-events-none absolute inset-0">
+   252→   511→        <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+   253→   512→        <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+   254→   513→      </div>
+   255→   514→      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   256→   515→        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+   257→   516→          <div>
+   258→   517→            <span className="inline-block rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-600 uppercase tracking-wider text-primary">Protection anti-piratage</span>
+   259→   518→            <h2 className="mt-4 font-heading text-3xl font-600 leading-tight sm:text-4xl" style={{ color: "#FBF5E3" }}>Le piratage devient risqué, pas votre business</h2>
+   260→   519→            <p className="mt-4 text-base" style={{ color: "rgba(251,245,227,0.7)" }}>
+   261→   520→              En Afrique, on ne bloque pas le pirate de la NSA. On rend le partage trop risqué pour l'acheteur honnête. Le watermark social joue sur la honte et la traçabilité — bien plus puissant qu'un DRM technique que tout le monde contourne.
+   262→   521→            </p>
+   263→   522→            <div className="mt-6 rounded-xl border border-primary/30 bg-primary/10 p-4">
+   264→   523→              <p className="font-heading text-sm" style={{ color: "#FBF5E3" }}>
+   265→   524→                « Si Jean partage le PDF sur Telegram, tout le monde voit que c'est{" "}
+   266→   525→                <span className="text-accent">jean@krea · +237 6•• •••</span> qui a fait fuiter le livre. »
+   267→   526→              </p>
+   268→   527→            </div>
+   269→   528→          </div>
+   270→   529→          <div className="grid gap-4 sm:grid-cols-2">
+   271→   530→            {layers.map((l, i) => (
+   272→   531→              <motion.div key={l.title} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-xl border border-primary/20 bg-white/5 p-5 backdrop-blur-sm">
+   273→   532→                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
+   274→   533→                  <l.icon className="h-5 w-5 text-primary" />
+   275→   534→                </div>
+   276→   535→                <h3 className="mt-3 font-heading text-base font-600" style={{ color: "#FBF5E3" }}>{l.title}</h3>
+   277→   536→                <p className="mt-1 text-sm" style={{ color: "rgba(251,245,227,0.65)" }}>{l.desc}</p>
+   278→   537→              </motion.div>
+   279→   538→            ))}
+   280→   539→          </div>
+   281→   540→        </div>
+   282→   541→      </div>
+   283→   542→    </section>
+   284→   543→  );
+   285→   544→}
+   286→   545→
+   287→   546→/* ───────────────────────── WALLET / PAYMENT ───────────────────────── */
+   288→   547→function WalletSection() {
+   289→   548→  return (
+   290→   549→    <section className="py-20 sm:py-28">
+   291→   550→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   292→   551→        <div className="grid items-center gap-12 lg:grid-cols-2">
+   293→   552→          <div>
+   294→   553→            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-600 uppercase tracking-wider text-primary">Wallet & paiements</span>
+   295→   554→            <h2 className="mt-4 font-heading text-3xl font-600 leading-tight text-foreground sm:text-4xl">L'argent arrive. Vraiment.</h2>
+   296→   555→            <p className="mt-4 text-base text-muted-foreground text-pretty">
+   297→   556→              Fini les retraits qui mettent 5 jours. Vos ventes tombent dans votre wallet Krea en temps réel. Vous retirez sur Mobile Money dès 10 000 F, en FCFA, sans conversion.
+   298→   557→            </p>
+   299→   558→            <ul className="mt-6 space-y-3">
+   300→   559→              {[
+   301→   560→                "Commission transparente (5% à 25% selon votre plan)",
+   302→   561→                "Compensation locale : l'argent reste dans le pays où il a été payé",
+   303→   562→                "Frais de retrait affichés avant validation (2%, min 200 F)",
+   304→   563→                "Relevé de ventes exportable pour votre comptabilité",
+   305→   564→              ].map((p) => (
+   306→   565→                <li key={p} className="flex items-start gap-2 text-sm text-foreground/80">
+   307→   566→                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+   308→   567→                  {p}
+   309→   568→                </li>
+   310→   569→              ))}
+   311→   570→            </ul>
+   312→   571→          </div>
+   313→   572→
+   314→   573→          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative">
+   315→   574→            <div className="rounded-2xl border border-border bg-card p-6 shadow-xl">
+   316→   575→              <div className="flex items-center justify-between">
+   317→   576→                <span className="text-xs font-500 text-muted-foreground">Solde disponible</span>
+   318→   577→                <Badge className="bg-primary/15 text-foreground hover:bg-primary/15">
+   319→   578→                  <Zap className="mr-1 h-3 w-3 text-primary" /> Temps réel
+   320→   579→                </Badge>
+   321→   580→              </div>
+   322→   581→              <div className="mt-2 font-heading text-4xl font-600 text-foreground">{formatFCFA(248500)}</div>
+   323→   582→              <div className="mt-1 text-xs text-muted-foreground">+{formatFCFA(18000)} cette semaine</div>
+   324→   583→
+   325→   584→              <div className="mt-6 space-y-2">
+   326→   585→                <p className="text-xs font-600 uppercase tracking-wider text-muted-foreground">Dernières ventes</p>
+   327→   586→                {[
+   328→   587→                  { name: "Aïcha D.", title: "Dropshipping en Afrique", amount: 5000, method: "MTN" },
+   329→   588→                  { name: "Marc K.", title: "100 prières", amount: 3500, method: "Orange" },
+   330→   589→                  { name: "Fatou S.", title: "Cuisine sénégalaise", amount: 4500, method: "Wave" },
+   331→   590→                ].map((tx, i) => (
+   332→   591→                  <div key={i} className="flex items-center justify-between rounded-lg bg-background/60 px-3 py-2">
+   333→   592→                    <div className="flex items-center gap-2">
+   334→   593→                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-xs font-600 text-primary">{tx.name[0]}</div>
+   335→   594→                      <div>
+   336→   595→                        <p className="text-xs font-500 text-foreground">{tx.name}</p>
+   337→   596→                        <p className="text-[10px] text-muted-foreground">{tx.title} · {tx.method}</p>
+   338→   597→                      </div>
+   339→   598→                    </div>
+   340→   599→                    <span className="font-heading text-sm font-600 text-primary">+{formatFCFA(tx.amount)}</span>
+   341→   600→                  </div>
+   342→   601→                ))}
+   343→   602→              </div>
+   344→   603→
+   345→   604→              <div className="mt-5 grid grid-cols-3 gap-2">
+   346→   605→                {["MTN", "Orange", "Wave"].map((m) => (
+   347→   606→                  <div key={m} className="rounded-lg border border-border bg-background px-2 py-2 text-center text-[10px] font-600 text-foreground/70">{m}</div>
+   348→   607→                ))}
+   349→   608→              </div>
+   350→   609→            </div>
+   351→   610→            <motion.div className="absolute -right-3 -top-3 rounded-full border border-border bg-accent px-3 py-1.5 text-xs font-600 text-accent-foreground shadow-lg" animate={{ y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity }}>
+   352→   611→              Retrait en 24h ⚡
+   353→   612→            </motion.div>
+   354→   613→          </motion.div>
+   355→   614→        </div>
+   356→   615→      </div>
+   357→   616→    </section>
+   358→   617→  );
+   359→   618→}
+   360→   619→
+   361→   620→/* ───────────────────────── TESTIMONIALS ───────────────────────── */
+   362→   621→function TestimonialsSection() {
+   363→   622→  const testimonials = [
+   364→   623→    { name: "Pasteur Emmanuel K.", role: "Auteur · Yaoundé", photo: "https://sfile.chatglm.cn/images-ppt/07247c601755.jpg", text: "Avant Krea, mes livrets de prière finissaient sur Telegram 2 jours après la vente. Aujourd'hui, chaque page porte le nom de l'acheteur. Mes ventes ont triplé et les fuites ont quasiment disparu.", rating: 5 },
+   365→   624→    { name: "Aïcha Diallo", role: "Coach business · Dakar", photo: "https://sfile.chatglm.cn/images-ppt/c6d285083e39.jpg", text: "J'ai arrêté Selar. Sur Krea, je reçois mon argent sur Wave en 24h, pas en 5 jours. Et ma page de vente ressemble enfin à quelque chose — mes clientes me font confiance.", rating: 5 },
+   366→   625→    { name: "Junior Mbarga", role: "Formateur tech · Douala", photo: "https://sfile.chatglm.cn/images-ppt/76e81d24e2e1.jpg", text: "L'éditeur intégré m'a fait gagner un temps fou. J'écris mes cours directement, la couverture est générée, et mes élèves lisent dans le reader sans pouvoir copier le code.", rating: 5 },
+   367→   626→    { name: "Fatou Sow", role: "Auteure cuisine · Abidjan", photo: "https://sfile.chatglm.cn/images-ppt/a9370e5f76e8.jpg", text: "Le watermark social, c'est génial. Une fille a essayé de partager mon ebook dans un groupe WhatsApp. Tout le monde a vu son numéro de téléphone. Elle a supprimé le message immédiatement.", rating: 4 },
+   368→   627→  ];
+   369→   628→  return (
+   370→   629→    <section className="bg-card/40 py-20 sm:py-28">
+   371→   630→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   372→   631→        <SectionHeading eyebrow="Ils vendent sur Krea" title="Des créateurs qui passent du piratage subi au business maîtrisé" />
+   373→   632→        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+   374→   633→          {testimonials.map((t, i) => (
+   375→   634→            <motion.div key={t.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col rounded-2xl border border-border bg-card p-6">
+   376→   635→              <Quote className="h-7 w-7 text-accent" />
+   377→   636→              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/80 text-pretty">"{t.text}"</p>
+   378→   637→              <div className="mt-4 flex items-center gap-1">
+   379→   638→                {Array.from({ length: 5 }).map((_, j) => (
+   380→   639→                  <Star key={j} className={j < t.rating ? "h-3.5 w-3.5 fill-accent text-accent" : "h-3.5 w-3.5 text-muted-foreground/30"} />
+   381→   640→                ))}
+   382→   641→              </div>
+   383→   642→              <div className="mt-3 flex items-center gap-2.5 border-t border-border pt-3">
+   384→   643→                <div className="h-9 w-9 overflow-hidden rounded-full">
+   385→   644→                  <img src={t.photo} alt={t.name} className="h-full w-full object-cover" />
+   386→   645→                </div>
+   387→   646→                <div>
+   388→   647→                  <p className="text-sm font-600 text-foreground">{t.name}</p>
+   389→   648→                  <p className="text-[11px] text-muted-foreground">{t.role}</p>
+   390→   649→                </div>
+   391→   650→              </div>
+   392→   651→            </motion.div>
+   393→   652→          ))}
+   394→   653→        </div>
+   395→   654→      </div>
+   396→   655→    </section>
+   397→   656→  );
+   398→   657→}
+   399→   658→
+   400→   659→/* ───────────────────────── PRICING ───────────────────────── */
+   401→   660→function PricingSection() {
+   402→   661→  const { openAuth, setView } = useApp();
+   403→   662→  const plans = [
+   404→   663→    { name: "Découverte", price: "Gratuit", tag: "Pour tester", commission: "25% de commission", features: ["Jusqu'à 3 ebooks", "Page de librairie standard", "Lecteur sécurisé", "Watermark social", "Paiement Mobile Money", "Statistiques de base"], cta: "Commencer", highlighted: false },
+   405→   664→    { name: "Pro", price: "7 500 F", period: "/ mois", tag: "Le plus populaire", commission: "15% de commission", features: ["Ebooks illimités", "Page de vente personnalisée", "Coupons & codes promo", "Affiliation automatique", "Analytics avancés", "Retrait prioritaire", "Support sous 24h"], cta: "Passer Pro", highlighted: true },
+   406→   665→    { name: "Premium", price: "25 000 F", period: "/ mois", tag: "Pour les pros & maisons d'édition", commission: "8% de commission", features: ["Tout Pro inclus", "Domaine personnalisé", "Email marketing intégré", "Mise en avant mensuelle", "Équipe & assistants", "Marque blanche", "Support prioritaire"], cta: "Contacter", highlighted: false },
+   407→   666→  ];
+   408→   667→  return (
+   409→   668→    <section className="py-20 sm:py-28">
+   410→   669→      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+   411→   670→        <SectionHeading eyebrow="Tarifs transparents" title="Payez quand vous gagnez" subtitle="Commencez gratuitement. Passez à un abonnement quand vos ventes décollent. La commission baisse à mesure que vous montez." />
+   412→   671→        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+   413→   672→          {plans.map((p, i) => (
+   414→   673→            <motion.div key={p.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative flex flex-col rounded-2xl border p-7 ${p.highlighted ? "border-primary bg-card shadow-xl shadow-primary/10 lg:-mt-4 lg:mb-4" : "border-border bg-card"}`}>
+   415→   674→              {p.highlighted && (
+   416→   675→                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+   417→   676→                  <Badge className="bg-primary text-primary-foreground shadow-md">{p.tag}</Badge>
+   418→   677→                </div>
+   419→   678→              )}
+   420→   679→              {!p.highlighted && <span className="text-xs font-500 text-muted-foreground">{p.tag}</span>}
+   421→   680→              <h3 className="mt-1 font-heading text-xl font-600 text-foreground">{p.name}</h3>
+   422→   681→              <div className="mt-3 flex items-baseline gap-1">
+   423→   682→                <span className="font-heading text-4xl font-600 text-foreground">{p.price}</span>
+   424→   683→                {p.period && <span className="text-sm text-muted-foreground">{p.period}</span>}
+   425→   684→              </div>
+   426→   685→              <p className="mt-1 text-sm font-500 text-primary">{p.commission}</p>
+   427→   686→              <ul className="mt-5 flex-1 space-y-2.5">
+   428→   687→                {p.features.map((f) => (
+   429→   688→                  <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
+   430→   689→                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+   431→   690→                    {f}
+   432→   691→                  </li>
+   433→   692→                ))}
+   434→   693→              </ul>
+   435→   694→              <Button className={`mt-6 ${p.highlighted ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-background text-foreground border border-border hover:bg-muted"}`} variant={p.highlighted ? "default" : "outline"} onClick={() => p.name === "Premium" ? setView({ name: "pricing" }) : openAuth("register-creator")}>
+   436→   695→                {p.cta}
+   437→   696→              </Button>
+   438→   697→            </motion.div>
+   439→   698→          ))}
+   440→   699→        </div>
+   441→   700→      </div>
+   442→   701→    </section>
+   443→   702→  );
+   444→   703→}
+   445→   704→
+   446→   705→/* ───────────────────────── FINAL CTA ───────────────────────── */
+   447→   706→function FinalCTA() {
+   448→   707→  const { openAuth } = useApp();
+   449→   708→  return (
+   450→   709→    <section className="px-4 pb-20 sm:px-6 lg:px-8">
+   451→   710→      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-[#1F4A2E] px-6 py-16 text-center sm:py-20" style={{ color: "#FBF5E3" }}>
+   452→   711→        <div className="pointer-events-none absolute inset-0">
+   453→   712→          <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
+   454→   713→          <div className="absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
+   455→   714→        </div>
+   456→   715→        <div className="relative">
+   457→   716→          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-heading text-3xl font-600 leading-tight sm:text-5xl text-balance" style={{ color: "#FBF5E3" }}>
+   458→   717→            Votre savoir vaut de l'argent.<br />Krea le protège.
+   459→   718→          </motion.h2>
+   460→   719→          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mx-auto mt-4 max-w-xl text-base" style={{ color: "rgba(251,245,227,0.75)" }}>
+   461→   720→            Rejoignez les créateurs africains qui vendent leur savoir sans se faire pirater. Inscription gratuite, première vente possible aujourd'hui.
+   462→   721→          </motion.p>
+   463→   722→          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="mt-8 flex flex-wrap justify-center gap-3">
+   464→   723→            <Button size="lg" className="bg-accent text-accent-foreground shadow-lg hover:bg-accent/90" onClick={() => openAuth("register-creator")}>
+   465→   724→              Créer ma librairie
+   466→   725→              <ArrowRight className="ml-2 h-4 w-4" />
+   467→   726→            </Button>
+   468→   727→            <Button size="lg" variant="outline" className="border-primary/40 bg-transparent hover:bg-primary/10" style={{ color: "#FBF5E3" }} onClick={() => useApp.getState().setView({ name: "marketplace" })}>
+   469→   728→              Explorer la marketplace
+   470→   729→            </Button>
+   471→   730→          </motion.div>
+   472→   731→        </div>
+   473→   732→      </div>
+   474→   733→    </section>
+   475→   734→  );
+   476→   735→}
+   477→   736→
