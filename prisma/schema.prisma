@@ -1,0 +1,360 @@
+// Krea — Prisma schema
+// Plateforme de création, vente et lecture protégée d'ebooks
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ── Users & roles ────────────────────────────────────────────────
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String
+  role          String    @default("BUYER") // BUYER | CREATOR | ADMIN
+  banned        Boolean   @default(false)
+  bannedReason  String?
+  avatarUrl     String?
+  phone         String?
+  country       String?   // CM, SN, CI, NG...
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  creator       Creator?
+  orders        Order[]
+  licenses      License[]
+  reviews       Review[]
+  readerSessions ReaderSession[]
+  wishlist      Wishlist[]
+  bookmarks     Bookmark[]
+  highlights    Highlight[]
+}
+
+model Creator {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slug          String    @unique // subdomain identifier: christiano.krea.com
+  displayName   String
+  bio           String?
+  tagline       String?
+  avatarUrl     String?
+  bannerUrl     String?
+  bannerColor   String    @default("#1F4A2E")
+  plan          String    @default("FREE") // FREE | PRO | PREMIUM
+  planRenewsAt  DateTime?
+  walletBalance Int       @default(0) // stored in FCFA (smallest unit handled as int)
+  totalSales    Int       @default(0) // count
+  totalRevenue  Int       @default(0) // FCFA
+  commissionRate Int      @default(25) // % platform commission for this creator
+  verified      Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // ── Creator site (fully customizable storefront) ──
+  siteName        String?  // custom site name (defaults to displayName)
+  siteEnabled     Boolean   @default(false) // whether the custom site is live
+  siteThemePreset String    @default("foret") // foret | ocean | terre | nuit | soleil | minimal
+  siteFontPreset  String    @default("merienda") // merienda | playfair | poppins | serif
+  siteLayout      String    @default("magazine") // magazine | boutique | editorial
+  siteHero        String?   // hero headline
+  siteHeroSub     String?   // hero subtitle
+  siteFooterText  String?   // footer tagline/copyright
+  siteSocial      String?   // JSON: { twitter, instagram, facebook, linkedin, youtube, tiktok, whatsapp, email }
+  siteShowAbout   Boolean   @default(true)
+  siteShowContact Boolean   @default(true)
+
+  ebooks        Ebook[]
+  payouts       Payout[]
+  affiliates    AffiliateLink[]
+  coupons       Coupon[]
+  bundles       Bundle[]
+  sitePages     SitePage[]
+}
+
+// ── Ebooks & content ─────────────────────────────────────────────
+model Ebook {
+  id            String    @id @default(cuid())
+  creatorId     String
+  creator       Creator   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  title         String
+  slug          String    @unique
+  subtitle      String?
+  description   String
+  coverUrl      String
+  coverColor    String    @default("#1F4A2E") // fallback cover bg
+  price         Int       // FCFA
+  compareAtPrice Int?     // original price for discount display
+  currency      String    @default("XOF")
+  category      String    @default("Savoir") // Savoir | Business | Spiritual | Cuisine | Romance | DevPerso | Tech
+  language      String    @default("fr")
+  pageCount     Int       @default(0)
+  wordCount     Int       @default(0)
+  status        String    @default("DRAFT") // DRAFT | PUBLISHED | REJECTED | ARCHIVED
+  featured      Boolean   @default(false)
+  isBestseller  Boolean   @default(false)
+  allowDownload Boolean   @default(true) // social watermark PDF allowed
+  watermarkMode String    @default("SOCIAL") // SOCIAL | FLATTEN | STEGA
+  deviceLimit   Int       @default(3)
+  ratingAvg     Float     @default(0)
+  ratingCount   Int       @default(0)
+  salesCount    Int       @default(0)
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  chapters      Chapter[]
+  orders        Order[]
+  licenses      License[]
+  reviews       Review[]
+  affiliateLinks AffiliateLink[]
+  coupons       Coupon[]
+  readerSessions ReaderSession[]
+  wishlistedBy  Wishlist[]
+  bookmarks     Bookmark[]
+  highlights    Highlight[]
+  bundleItems   BundleItem[]
+
+  @@index([creatorId])
+  @@index([status])
+  @@index([category])
+}
+
+model Wishlist {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, ebookId])
+  @@index([userId])
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  chapterIdx Int     @default(0)
+  label     String   @default("")
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([ebookId])
+}
+
+model Highlight {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  chapterIdx Int     @default(0)
+  text      String
+  note      String?
+  color     String   @default("yellow")
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([ebookId])
+}
+
+model Chapter {
+  id        String   @id @default(cuid())
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  title     String
+  content   String   // markdown body
+  order     Int      @default(0)
+  wordCount Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ebookId])
+}
+
+// ── Commerce ─────────────────────────────────────────────────────
+model Order {
+  id            String    @id @default(cuid())
+  ref           String    @unique // KRE-XXXXXX
+  buyerId       String
+  buyer         User      @relation(fields: [buyerId], references: [id])
+  ebookId       String
+  ebook         Ebook     @relation(fields: [ebookId], references: [id])
+  amount        Int       // total charged, FCFA
+  platformFee   Int       @default(0)
+  creatorEarning Int      @default(0)
+  paymentMethod String    @default("MTN") // MTN | ORANGE | WAVE | CARD | PAYSTACK
+  paymentStatus String    @default("PENDING") // PENDING | PAID | FAILED | REFUNDED
+  fulfillment   String    @default("PENDING") // PENDING | DELIVERED
+  country       String?
+  affiliateCode String?
+  createdAt     DateTime  @default(now())
+
+  license       License?
+
+  @@index([buyerId])
+  @@index([ebookId])
+}
+
+model License {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ebookId       String
+  ebook         Ebook     @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  orderId       String?   @unique
+  order         Order?    @relation(fields: [orderId], references: [id])
+  accessType    String    @default("PERPETUAL") // PERPETUAL | RENTAL | SUBSCRIPTION
+  deviceLimit   Int       @default(3)
+  devicesUsed   String    @default("") // comma-separated device fingerprints
+  status        String    @default("ACTIVE") // ACTIVE | SUSPENDED | REVOKED
+  progress      Int       @default(0) // percent 0-100
+  lastReadAt    DateTime?
+  expiresAt     DateTime?
+  createdAt     DateTime  @default(now())
+
+  sessions      ReaderSession[]
+
+  @@index([userId])
+  @@index([ebookId])
+}
+
+model Payout {
+  id          String   @id @default(cuid())
+  ref         String   @unique
+  creatorId   String
+  creator     Creator  @relation(fields: [creatorId], references: [id])
+  amount      Int      // FCFA
+  fee         Int      @default(0)
+  method      String   @default("MTN") // MTN | ORANGE | WAVE | BANK
+  status      String   @default("PENDING") // PENDING | PAID | FAILED
+  createdAt   DateTime @default(now())
+}
+
+model ReaderSession {
+  id          String   @id @default(cuid())
+  licenseId   String
+  license     License  @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  ebookId     String
+  ebook       Ebook    @relation(fields: [ebookId], references: [id])
+  deviceFp    String   @default("")
+  ip          String?
+  pagesRead   Int      @default(0)
+  durationSec Int      @default(0)
+  startedAt   DateTime @default(now())
+  endedAt     DateTime?
+
+  @@index([licenseId])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+  rating    Int      // 1-5
+  comment   String?
+  createdAt DateTime @default(now())
+
+  @@unique([userId, ebookId])
+}
+
+model Coupon {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  creatorId   String?
+  creator     Creator? @relation(fields: [creatorId], references: [id])
+  ebookId     String?
+  ebook       Ebook?   @relation(fields: [ebookId], references: [id])
+  percentOff  Int      // 10, 25, 50...
+  maxRedemptions Int   @default(100)
+  redeemed    Int      @default(0)
+  expiresAt   DateTime?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model AffiliateLink {
+  id         String   @id @default(cuid())
+  code       String   @unique
+  creatorId  String
+  creator    Creator  @relation(fields: [creatorId], references: [id])
+  ebookId    String?
+  ebook      Ebook?   @relation(fields: [ebookId], references: [id])
+  commission Int      @default(20) // % to affiliate
+  clicks     Int      @default(0)
+  conversions Int     @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model PlatformStats {
+  id            String   @id @default("singleton")
+  totalRevenue  Int      @default(0)
+  totalPayouts  Int      @default(0)
+  totalCreators Int      @default(0)
+  totalEbooks   Int      @default(0)
+  totalReaders  Int      @default(0)
+  updatedAt     DateTime @updatedAt
+}
+
+// ── Bundles (sell multiple ebooks at a discount) ─────────────────
+model Bundle {
+  id          String       @id @default(cuid())
+  creatorId   String
+  creator     Creator      @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  title       String
+  slug        String       @unique
+  description String
+  price       Int          // bundle price in FCFA
+  originalTotal Int        // sum of individual ebook prices
+  discountPct Int          // calculated discount percentage
+  coverColor  String       @default("#1F4A2E")
+  status      String       @default("PUBLISHED") // PUBLISHED | DRAFT
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  items       BundleItem[]
+
+  @@index([creatorId])
+}
+
+model BundleItem {
+  id        String   @id @default(cuid())
+  bundleId  String
+  bundle    Bundle   @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  ebookId   String
+  ebook     Ebook    @relation(fields: [ebookId], references: [id], onDelete: Cascade)
+
+  @@unique([bundleId, ebookId])
+}
+
+// ── Creator site pages (custom subpages) ──────────────────────────
+model SitePage {
+  id        String   @id @default(cuid())
+  creatorId String
+  creator   Creator  @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  slug      String   // url slug, unique per creator
+  title     String
+  content   String   // markdown body
+  showInNav Boolean  @default(true)
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([creatorId, slug])
+  @@index([creatorId])
+}
