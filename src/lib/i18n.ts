@@ -233,6 +233,7 @@ export const translations = {
     "cta.desc": "Rejoignez les créateurs africains qui vendent leur savoir sans se faire pirater. Inscription gratuite, première vente possible aujourd'hui.",
     "cta.button1": "Créer ma librairie",
     "cta.button2": "Explorer la marketplace",
+    "cta.badge": "Prêt à commencer",
 
     // ── Auth page ──
     "auth.tagline": "Votre savoir vaut de l'argent.",
@@ -562,6 +563,7 @@ export const translations = {
     "cta.desc": "Join African creators who sell their knowledge without getting pirated. Free signup, first sale possible today.",
     "cta.button1": "Create my library",
     "cta.button2": "Explore the marketplace",
+    "cta.badge": "Ready to start",
 
     // ── Auth page ──
     "auth.tagline": "Your knowledge is worth money.",

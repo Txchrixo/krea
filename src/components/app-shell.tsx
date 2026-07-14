@@ -32,7 +32,18 @@ export function AppShell() {
   const [booted, setBooted] = useState(false);
 
   useEffect(() => {
-    useApp.getState().refreshUser().finally(() => setBooted(true));
+    const minDelay = new Promise((r) => setTimeout(r, 900));
+    Promise.all([useApp.getState().refreshUser(), minDelay])
+      .finally(() => {
+        setBooted(true);
+        // Fade out + remove the SSR boot loader (single loader, no flicker)
+        const el = document.getElementById("boot-loader");
+        if (el) {
+          el.style.transition = "opacity 0.4s ease";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 400);
+        }
+      });
   }, []);
 
   const requiresAuth =
@@ -86,12 +97,7 @@ export function AppShell() {
       {showChrome && <PageFrame />}
       <main className="flex-1">
         {!booted ? (
-          <div className="flex min-h-[60vh] items-center justify-center">
-            <div className="flex flex-col items-center gap-3">
-              <div className="h-10 w-10 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-              <p className="text-sm text-muted-foreground">Chargement de Krea…</p>
-            </div>
-          </div>
+          <div className="min-h-[60vh]" />
         ) : (
           <ViewRouter />
         )}

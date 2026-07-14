@@ -121,6 +121,7 @@ export function WalletSection() {
             viewport={{ once: true }}
             className="relative"
           >
+            {/* Callout badge — top-left, overlapping the card's rounded corner */}
             <motion.div
               className="absolute -left-3 -top-3 z-10 rounded-full border border-border bg-foreground px-3 py-1.5 text-xs font-600 text-background shadow-lg"
               animate={{ y: [0, -6, 0] }}
