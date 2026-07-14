@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Krea palette — cream / forest / mint / yellow */
+  --background: #FBF5E3;
+  --foreground: #1F4A2E;
+  --card: #FFFCF1;
+  --card-foreground: #1F4A2E;
+  --popover: #FFFCF1;
+  --popover-foreground: #1F4A2E;
+  --primary: #5DBE8A;
+  --primary-foreground: #1F4A2E;
+  --secondary: #EFE6C8;
+  --secondary-foreground: #1F4A2E;
+  --muted: #F3ECD4;
+  --muted-foreground: #697E6E;
+  --accent: #FFD86B;
+  --accent-foreground: #1F4A2E;
+  --destructive: #C8553D;
+  --border: #CBD8CE;
+  --input: #CBD8CE;
+  --ring: #5DBE8A;
+  --chart-1: #5DBE8A;
+  --chart-2: #FFD86B;
+  --chart-3: #1F4A2E;
+  --chart-4: #697E6E;
+  --chart-5: #C8553D;
+  --sidebar: #FFFCF1;
+  --sidebar-foreground: #1F4A2E;
+  --sidebar-primary: #5DBE8A;
+  --sidebar-primary-foreground: #1F4A2E;
+  --sidebar-accent: #EFE6C8;
+  --sidebar-accent-foreground: #1F4A2E;
+  --sidebar-border: #CBD8CE;
+  --sidebar-ring: #5DBE8A;
+}
+
+.dark {
+  --background: #122818;
+  --foreground: #FBF5E3;
+  --card: #1A3322;
+  --card-foreground: #FBF5E3;
+  --popover: #1A3322;
+  --popover-foreground: #FBF5E3;
+  --primary: #5DBE8A;
+  --primary-foreground: #122818;
+  --secondary: #243B2B;
+  --secondary-foreground: #FBF5E3;
+  --muted: #1F3526;
+  --muted-foreground: #9DB3A2;
+  --accent: #FFD86B;
+  --accent-foreground: #122818;
+  --destructive: #E0705A;
+  --border: #2E4A37;
+  --input: #2E4A37;
+  --ring: #5DBE8A;
+  --chart-1: #5DBE8A;
+  --chart-2: #FFD86B;
+  --chart-3: #FBF5E3;
+  --chart-4: #9DB3A2;
+  --chart-5: #E0705A;
+  --sidebar: #1A3322;
+  --sidebar-foreground: #FBF5E3;
+  --sidebar-primary: #5DBE8A;
+  --sidebar-primary-foreground: #122818;
+  --sidebar-accent: #243B2B;
+  --sidebar-accent-foreground: #FBF5E3;
+  --sidebar-border: #2E4A37;
+  --sidebar-ring: #5DBE8A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body), sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
+}
+
+/* Custom scrollbar — Krea branded, applied globally via webkit pseudo-elements only.
+   IMPORTANT: do NOT set `scrollbar-width` / `scrollbar-color` on html/body —
+   in Chromium 121+ those standard properties put the element in "native scrollbar"
+   mode and make `::-webkit-scrollbar` rules be IGNORED, which produces a different
+   (thinner) scrollbar on the page vs inner scroll panels. Keeping ONLY the webkit
+   pseudo-elements guarantees the SAME 10px rounded pill everywhere in Chromium/Safari.
+   Firefox falls back to its default scrollbar (acceptable tradeoff). */
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.6);
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-corner,
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@layer utilities {
+  /* Grain texture overlay for the editorial feel */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Marquee */
+  @keyframes krea-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: krea-marquee 40s linear infinite;
+  }
+
+  /* Soft float */
+  @keyframes krea-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  .animate-float {
+    animation: krea-float 6s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: krea-float 9s ease-in-out infinite;
+  }
+
+  /* Slow spin for badges */
+  @keyframes krea-spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: krea-spin-slow 24s linear infinite;
+  }
+
+  /* Gradient sheen sweep */
+  @keyframes krea-sheen {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .animate-sheen {
+    background-size: 200% auto;
+    animation: krea-sheen 5s linear infinite;
+  }
+
+  /* Reader: prevent text selection / right click (soft DRM barrier) */
+  .reader-protected {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .reader-protected prose {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
