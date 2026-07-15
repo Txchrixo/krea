@@ -2,8 +2,6 @@
   <img src="public/logo.svg" alt="Krea" width="120" />
 </p>
 
-<h1 align="center">Krea</h1>
-
 <p align="center">Create, sell, and protect your ebooks. Built for African creators.</p>
 
 <p align="center">
