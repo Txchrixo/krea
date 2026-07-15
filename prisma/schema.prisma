@@ -1,4 +1,4 @@
-// Krea — Prisma schema
+// Krea : Prisma schema
 // Plateforme de création, vente et lecture protégée d'ebooks
 
 generator client {

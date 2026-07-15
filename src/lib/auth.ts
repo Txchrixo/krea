@@ -1,4 +1,4 @@
-// Krea — Auth helpers (cookie-based session via HMAC)
+// Krea : Auth helpers (cookie-based session via HMAC)
 import { cookies } from "next/headers";
 import { db } from "@/lib/db";
 import type { SessionUser } from "@/lib/types";

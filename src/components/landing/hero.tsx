@@ -81,7 +81,7 @@ const POSITION_SLOTS: Slot[] = [
   { x: "-32%", y: "340px", z: 22, scale: 0.7,  rotate: -5,  opacity: 0.9 },
 ];
 
-// Each book has a "slot index" — when you click a book, it swaps to slot 0 (top-left)
+// Each book has a "slot index" : when you click a book, it swaps to slot 0 (top-left)
 // and the book that was at slot 0 goes to the clicked book's old slot
 function getSlotsForBooks(activeId: string): Record<string, Slot> {
   const result: Record<string, Slot> = {};
@@ -121,7 +121,7 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative grain overflow-hidden">
-      {/* Giant engraved "Krea" watermark — editorial, awards-style */}
+      {/* Giant engraved "Krea" watermark : editorial, awards-style */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-1/2 -z-0 -translate-y-1/2 select-none text-center font-heading font-700 leading-none tracking-tighter"
@@ -188,7 +188,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: interactive book stack + reader mockup — centered when wrapped */}
+          {/* Right: interactive book stack + reader mockup : centered when wrapped */}
           <div className="relative flex justify-center pl-8 lg:col-span-5 lg:justify-end lg:pl-0">
             <motion.div
               style={{ y: yScroll }}
@@ -197,7 +197,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative mx-auto h-[520px] w-full max-w-sm"
             >
-              {/* Book covers — swap positions on click */}
+              {/* Book covers : swap positions on click */}
               {BOOKS.map((book, i) => (
                 <BookCover
                   key={book.id}
@@ -209,7 +209,7 @@ export function HeroSection() {
                 />
               ))}
 
-              {/* Reader mockup — shows active book */}
+              {/* Reader mockup : shows active book */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Sale notification — payment logo fully circular */}
+              {/* Sale notification : payment logo fully circular */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeBook.id}

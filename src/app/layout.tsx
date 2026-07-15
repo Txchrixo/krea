@@ -21,14 +21,14 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Krea — Créez, vendez et protégez vos ebooks",
+  title: "Krea : Créez, vendez et protégez vos ebooks",
   description:
     "Krea est la librairie digitale personnalisée et protégée pour créateurs africains. Créez vos ebooks, vendez-les via Mobile Money, et faites lire vos clients dans une bibliothèque sécurisée.",
   keywords: ["Krea", "ebook", "Afrique", "Mobile Money", "Selar alternative", "lecture protégée", "créateurs", "CFA"],
   authors: [{ name: "Krea" }],
   icons: { icon: "/logo.svg" },
   openGraph: {
-    title: "Krea — La librairie digitale des créateurs africains",
+    title: "Krea : La librairie digitale des créateurs africains",
     description: "Créez, vendez et protégez vos ebooks sur une seule plateforme.",
     siteName: "Krea",
     type: "website",
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         {/* Unblock CSS: convert render-blocking stylesheet links to preload. */}
         <script dangerouslySetInnerHTML={{ __html: UNBLOCK_CSS }} />
-        {/* Loader animation styles — in <head> so they apply before paint. */}
+        {/* Loader animation styles : in <head> so they apply before paint. */}
         <style dangerouslySetInnerHTML={{ __html: KREA_LOADER_CSS }} />
       </head>
       <body
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         suppressHydrationWarning
       >
         {/*
-          Boot loader — injected as raw HTML string (not a React component).
+          Boot loader : injected as raw HTML string (not a React component).
           This ensures the SVG + animation is in the HTML stream
           BEFORE React hydrates, so the animation starts on first paint.
         */}
@@ -96,7 +96,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
 /**
  * Minimal script: converts existing + future <link rel="stylesheet"> to non-blocking preload.
- * This is the only inline script — keeps layout.tsx clean.
+ * This is the only inline script : keeps layout.tsx clean.
  */
 const UNBLOCK_CSS = `
 document.documentElement.style.backgroundColor='#FBF5E3';

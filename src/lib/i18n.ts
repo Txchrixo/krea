@@ -1,4 +1,4 @@
-// Krea — i18n translations (FR / EN)
+// Krea : i18n translations (FR / EN)
 // Centralized, maintainable. Add new keys to both languages.
 
 export type Lang = "fr" | "en";
@@ -44,7 +44,7 @@ export const translations = {
     "footer.wallet": "Wallet & retraits",
     "footer.mobile": "Mobile Money",
 
-    // ── Landing — Hero ──
+    // ── Landing : Hero ──
     "hero.badge": "La librairie digitale des créateurs africains",
     "hero.title1": "Vendez vos ebooks",
     "hero.title2": "sans envoyer",
@@ -62,7 +62,7 @@ export const translations = {
     "hero.alt.cover": "Couverture ebook",
     "hero.alt.reader": "Lectrice",
 
-    // ── Landing — Marquee ──
+    // ── Landing : Marquee ──
     "marquee.mobile": "Mobile Money",
     "marquee.orange": "Orange Money",
     "marquee.wave": "Wave",
@@ -76,19 +76,19 @@ export const translations = {
     "marquee.withdrawals": "Retraits CFA",
     "marquee.editor": "Éditeur intégré",
 
-    // ── Landing — Stats ──
+    // ── Landing : Stats ──
     "stats.ebooks": "Ebooks publiés",
     "stats.creators": "Créateurs actifs",
     "stats.revenue": "FCFA reversés",
     "stats.satisfaction": "Taux de satisfaction",
 
-    // ── Landing — Pillars ──
+    // ── Landing : Pillars ──
     "pillars.eyebrow": "Trois piliers, une plateforme",
     "pillars.title": "Krea n'est pas juste un lien de téléchargement",
     "pillars.subtitle": "Création, vente, lecture protégée. Tout est intégré, pensé pour les créateurs africains qui vendent du savoir.",
     "pillars.1.tag": "01 · Créez",
     "pillars.1.title": "Un éditeur d'ebook pensé pour le mobile",
-    "pillars.1.desc": "Écrivez chapitre par chapitre, importez votre texte, générez une couverture. Aucune compétence technique requise — juste votre savoir.",
+    "pillars.1.desc": "Écrivez chapitre par chapitre, importez votre texte, générez une couverture. Aucune compétence technique requise : juste votre savoir.",
     "pillars.2.tag": "02 · Vendez",
     "pillars.2.title": "Encaissez par Mobile Money, partout en Afrique",
     "pillars.2.desc": "MTN, Orange, Wave, carte bancaire. L'argent arrive dans votre wallet Krea. Vous retirez quand vous voulez, en FCFA.",
@@ -108,7 +108,7 @@ export const translations = {
     "pillars.3.point3": "Limite d'appareils",
     "pillars.3.point4": "Traçabilité des sessions",
 
-    // ── Landing — How it works ──
+    // ── Landing : How it works ──
     "how.eyebrow": "Comment ça marche",
     "how.title": "De l'idée à la vente en 4 étapes",
     "how.subtitle": "Pensé pour que vous passiez moins de temps sur la technique et plus de temps à créer.",
@@ -126,16 +126,16 @@ export const translations = {
     "how.step4.desc": "L'argent arrive instantanément. Retirez sur MTN/Orange/Wave dès 10 000 F.",
     "how.step4.detail": "Le wallet Krea crédite vos ventes en temps réel. Retrait sous 24h en FCFA.",
 
-    // ── Landing — Featured ──
+    // ── Landing : Featured ──
     "featured.badge": "Trending",
     "featured.title": "Les ebooks qui se vendent maintenant",
     "featured.viewAll": "Voir tout",
     "featured.viewAllMarketplace": "Voir toute la marketplace",
 
-    // ── Landing — Protection ──
+    // ── Landing : Protection ──
     "protection.eyebrow": "Protection anti-piratage",
     "protection.title": "Le piratage devient risqué, pas votre business",
-    "protection.desc": "En Afrique, on ne bloque pas le pirate de la NSA. On rend le partage trop risqué pour l'acheteur honnête. Le watermark social joue sur la honte et la traçabilité — bien plus puissant qu'un DRM technique que tout le monde contourne.",
+    "protection.desc": "En Afrique, on ne bloque pas le pirate de la NSA. On rend le partage trop risqué pour l'acheteur honnête. Le watermark social joue sur la honte et la traçabilité : bien plus puissant qu'un DRM technique que tout le monde contourne.",
     "protection.f1.title": "Watermark social",
     "protection.f1.desc": "Nom, email et n° de téléphone de l'acheteur incrustés sur chaque page.",
     "protection.f2.title": "Aplatissement (flatten)",
@@ -148,7 +148,7 @@ export const translations = {
     "protection.quote.user": "jean@krea · +237 6•• •••",
     "protection.quote.post": " qui a fait fuiter le livre. »",
 
-    // ── Landing — Wallet ──
+    // ── Landing : Wallet ──
     "wallet.eyebrow": "Wallet & paiements",
     "wallet.title": "L'argent arrive. Vraiment.",
     "wallet.desc": "Fini les retraits qui mettent 5 jours. Vos ventes tombent dans votre wallet Krea en temps réel. Vous retirez sur Mobile Money dès 10 000 F, en FCFA, sans conversion.",
@@ -170,7 +170,7 @@ export const translations = {
     "wallet.tx.4.buyer": "David E.",
     "wallet.tx.4.title": "Gérer son argent",
 
-    // ── Landing — Testimonials ──
+    // ── Landing : Testimonials ──
     "testimonials.eyebrow": "Ils vendent sur Krea",
     "testimonials.title": "Des créateurs qui passent du piratage subi au business maîtrisé",
     "testimonial.1.name": "Pasteur Emmanuel K.",
@@ -178,7 +178,7 @@ export const translations = {
     "testimonial.1.text": "Avant Krea, mes livrets de prière finissaient sur Telegram 2 jours après la vente. Aujourd'hui, chaque page porte le nom de l'acheteur. Mes ventes ont triplé et les fuites ont quasiment disparu.",
     "testimonial.2.name": "Aïcha Diallo",
     "testimonial.2.role": "Coach business · Dakar",
-    "testimonial.2.text": "J'ai arrêté Selar. Sur Krea, je reçois mon argent sur Wave en 24h, pas en 5 jours. Et ma page de vente ressemble enfin à quelque chose — mes clientes me font confiance.",
+    "testimonial.2.text": "J'ai arrêté Selar. Sur Krea, je reçois mon argent sur Wave en 24h, pas en 5 jours. Et ma page de vente ressemble enfin à quelque chose : mes clientes me font confiance.",
     "testimonial.3.name": "Junior Mbarga",
     "testimonial.3.role": "Formateur tech · Douala",
     "testimonial.3.text": "L'éditeur intégré m'a fait gagner un temps fou. J'écris mes cours directement, la couverture est générée, et mes élèves lisent dans le reader sans pouvoir copier le code.",
@@ -186,7 +186,7 @@ export const translations = {
     "testimonial.4.role": "Auteure cuisine · Abidjan",
     "testimonial.4.text": "Le watermark social, c'est génial. Une fille a essayé de partager mon ebook dans un groupe WhatsApp. Tout le monde a vu son numéro de téléphone. Elle a supprimé le message immédiatement.",
 
-    // ── Landing — Pricing ──
+    // ── Landing : Pricing ──
     "pricing.eyebrow": "Tarifs transparents",
     "pricing.title": "Payez quand vous gagnez",
     "pricing.subtitle": "Commencez gratuitement. Passez à un abonnement quand vos ventes décollent. La commission baisse à mesure que vous montez.",
@@ -227,7 +227,7 @@ export const translations = {
     "pricing.premium.feature6": "Marque blanche",
     "pricing.premium.feature7": "Support prioritaire",
 
-    // ── Landing — Final CTA ──
+    // ── Landing : Final CTA ──
     "cta.title1": "Votre savoir vaut de l'argent.",
     "cta.title2": "Krea le protège.",
     "cta.desc": "Rejoignez les créateurs africains qui vendent leur savoir sans se faire pirater. Inscription gratuite, première vente possible aujourd'hui.",
@@ -374,7 +374,7 @@ export const translations = {
     "footer.wallet": "Wallet & withdrawals",
     "footer.mobile": "Mobile Money",
 
-    // ── Landing — Hero ──
+    // ── Landing : Hero ──
     "hero.badge": "The digital library for African creators",
     "hero.title1": "Sell your ebooks",
     "hero.title2": "without sending",
@@ -392,7 +392,7 @@ export const translations = {
     "hero.alt.cover": "Ebook cover",
     "hero.alt.reader": "Reader",
 
-    // ── Landing — Marquee ──
+    // ── Landing : Marquee ──
     "marquee.mobile": "Mobile Money",
     "marquee.orange": "Orange Money",
     "marquee.wave": "Wave",
@@ -406,19 +406,19 @@ export const translations = {
     "marquee.withdrawals": "CFA withdrawals",
     "marquee.editor": "Integrated editor",
 
-    // ── Landing — Stats ──
+    // ── Landing : Stats ──
     "stats.ebooks": "Published ebooks",
     "stats.creators": "Active creators",
     "stats.revenue": "FCFA paid out",
     "stats.satisfaction": "Satisfaction rate",
 
-    // ── Landing — Pillars ──
+    // ── Landing : Pillars ──
     "pillars.eyebrow": "Three pillars, one platform",
     "pillars.title": "Krea is not just a download link",
     "pillars.subtitle": "Creation, sales, protected reading. Everything is integrated, designed for African creators who sell knowledge.",
     "pillars.1.tag": "01 · Create",
     "pillars.1.title": "An ebook editor designed for mobile",
-    "pillars.1.desc": "Write chapter by chapter, import your text, generate a cover. No technical skills required — just your knowledge.",
+    "pillars.1.desc": "Write chapter by chapter, import your text, generate a cover. No technical skills required : just your knowledge.",
     "pillars.2.tag": "02 · Sell",
     "pillars.2.title": "Get paid via Mobile Money, everywhere in Africa",
     "pillars.2.desc": "MTN, Orange, Wave, bank card. Money arrives in your Krea wallet. Withdraw whenever you want, in FCFA.",
@@ -438,7 +438,7 @@ export const translations = {
     "pillars.3.point3": "Device limit",
     "pillars.3.point4": "Session traceability",
 
-    // ── Landing — How it works ──
+    // ── Landing : How it works ──
     "how.eyebrow": "How it works",
     "how.title": "From idea to sale in 4 steps",
     "how.subtitle": "Designed so you spend less time on tech and more time creating.",
@@ -456,16 +456,16 @@ export const translations = {
     "how.step4.desc": "Money arrives instantly. Withdraw to MTN/Orange/Wave from 10,000 F.",
     "how.step4.detail": "The Krea wallet credits your sales in real time. Withdrawal within 24h in FCFA.",
 
-    // ── Landing — Featured ──
+    // ── Landing : Featured ──
     "featured.badge": "Trending",
     "featured.title": "Ebooks selling right now",
     "featured.viewAll": "View all",
     "featured.viewAllMarketplace": "View all marketplace",
 
-    // ── Landing — Protection ──
+    // ── Landing : Protection ──
     "protection.eyebrow": "Anti-piracy protection",
     "protection.title": "Piracy becomes risky, not your business",
-    "protection.desc": "In Africa, you don't block the NSA hacker. You make sharing too risky for the honest buyer. Social watermark plays on shame and traceability — far more powerful than a technical DRM that everyone bypasses.",
+    "protection.desc": "In Africa, you don't block the NSA hacker. You make sharing too risky for the honest buyer. Social watermark plays on shame and traceability : far more powerful than a technical DRM that everyone bypasses.",
     "protection.f1.title": "Social watermark",
     "protection.f1.desc": "Buyer's name, email and phone number embedded on every page.",
     "protection.f2.title": "Flattening",
@@ -478,7 +478,7 @@ export const translations = {
     "protection.quote.user": "jean@krea · +237 6•• •••",
     "protection.quote.post": " who leaked the book.\"",
 
-    // ── Landing — Wallet ──
+    // ── Landing : Wallet ──
     "wallet.eyebrow": "Wallet & payments",
     "wallet.title": "The money arrives. Really.",
     "wallet.desc": "No more 5-day withdrawals. Your sales land in your Krea wallet in real time. Withdraw to Mobile Money from 10,000 F, in FCFA, no conversion.",
@@ -500,7 +500,7 @@ export const translations = {
     "wallet.tx.4.buyer": "David E.",
     "wallet.tx.4.title": "Manage your money",
 
-    // ── Landing — Testimonials ──
+    // ── Landing : Testimonials ──
     "testimonials.eyebrow": "They sell on Krea",
     "testimonials.title": "Creators moving from piracy to a mastered business",
     "testimonial.1.name": "Pastor Emmanuel K.",
@@ -508,7 +508,7 @@ export const translations = {
     "testimonial.1.text": "Before Krea, my prayer booklets ended up on Telegram 2 days after the sale. Today, every page bears the buyer's name. My sales tripled and leaks have practically disappeared.",
     "testimonial.2.name": "Aïcha Diallo",
     "testimonial.2.role": "Business coach · Dakar",
-    "testimonial.2.text": "I quit Selar. On Krea, I receive my money on Wave in 24h, not 5 days. And my sales page finally looks like something — my clients trust me.",
+    "testimonial.2.text": "I quit Selar. On Krea, I receive my money on Wave in 24h, not 5 days. And my sales page finally looks like something : my clients trust me.",
     "testimonial.3.name": "Junior Mbarga",
     "testimonial.3.role": "Tech trainer · Douala",
     "testimonial.3.text": "The integrated editor saved me tons of time. I write my courses directly, the cover is generated, and my students read in the reader without being able to copy the code.",
@@ -516,7 +516,7 @@ export const translations = {
     "testimonial.4.role": "Cooking author · Abidjan",
     "testimonial.4.text": "The social watermark is great. A girl tried to share my ebook in a WhatsApp group. Everyone saw her phone number. She deleted the message immediately.",
 
-    // ── Landing — Pricing ──
+    // ── Landing : Pricing ──
     "pricing.eyebrow": "Transparent pricing",
     "pricing.title": "Pay when you earn",
     "pricing.subtitle": "Start for free. Upgrade when your sales take off. Commission decreases as you grow.",
@@ -557,7 +557,7 @@ export const translations = {
     "pricing.premium.feature6": "White label",
     "pricing.premium.feature7": "Priority support",
 
-    // ── Landing — Final CTA ──
+    // ── Landing : Final CTA ──
     "cta.title1": "Your knowledge is worth money.",
     "cta.title2": "Krea protects it.",
     "cta.desc": "Join African creators who sell their knowledge without getting pirated. Free signup, first sale possible today.",

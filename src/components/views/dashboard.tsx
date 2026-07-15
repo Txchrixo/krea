@@ -421,7 +421,7 @@ function SalesTab({ stats }: { stats: DashboardStats }) {
 function AnalyticsTab({ stats }: { stats: DashboardStats }) {
   const insights = [
     { label: "Taux de conversion", value: `${(stats.conversionRate ?? 0).toFixed(1)}%`, icon: TrendingUp, desc: "Visiteurs → acheteurs" },
-    { label: "Panier moyen", value: stats.totalSales > 0 ? formatFCFA(Math.round((stats.totalRevenue ?? 0) / stats.totalSales)) : "—", icon: DollarSign, desc: "Par commande" },
+    { label: "Panier moyen", value: stats.totalSales > 0 ? formatFCFA(Math.round((stats.totalRevenue ?? 0) / stats.totalSales)) : " - ", icon: DollarSign, desc: "Par commande" },
     { label: "Ebooks publiés", value: String(stats.publishedEbooks), icon: BookOpen, desc: `sur ${stats.totalEbooks} créés` },
     { label: "Note moyenne", value: `${(stats.ratingAvg ?? 0).toFixed(1)} / 5`, icon: Star, desc: "Tous ebooks confondus" },
   ];

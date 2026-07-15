@@ -29,7 +29,7 @@ export async function GET(
     }
     if (!isOwner && !licensed) {
       return NextResponse.json(
-        { error: "Accès refusé — licence requise." },
+        { error: "Accès refusé : licence requise." },
         { status: 403 }
       );
     }

@@ -284,7 +284,7 @@ export function AdminView() {
                 {ebooks.map((eb) => (
                   <tr key={eb.id} className="border-b border-border/50">
                     <td className="py-2.5 pr-3 font-500">{eb.title}</td>
-                    <td className="px-3 text-muted-foreground">{eb.creator?.displayName ?? "—"}</td>
+                    <td className="px-3 text-muted-foreground">{eb.creator?.displayName ?? " - "}</td>
                     <td className="px-3">{formatFCFA(eb.price)}</td>
                     <td className="px-3">{eb.salesCount}</td>
                     <td className="px-3"><Badge variant="outline" className="text-muted-foreground">{eb.status}</Badge></td>
@@ -566,7 +566,7 @@ function AdminUsersSection() {
                       {u.role}
                     </Badge>
                   </td>
-                  <td className="px-3 text-muted-foreground">{u.country || "—"}</td>
+                  <td className="px-3 text-muted-foreground">{u.country || " - "}</td>
                   <td className="px-3">{u._count.licenses}</td>
                   <td className="px-3">{u._count.reviews}</td>
                   <td className="px-3">
@@ -579,7 +579,7 @@ function AdminUsersSection() {
                         </div>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground/40">—</span>
+                      <span className="text-muted-foreground/40"> - </span>
                     )}
                   </td>
                   <td className="px-3 text-xs text-muted-foreground">{formatDate(u.createdAt)}</td>

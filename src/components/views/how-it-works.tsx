@@ -121,13 +121,13 @@ export function HowItWorksView() {
                   <tr key={row.feature} className="border-b border-border/50">
                     <td className="p-4 text-foreground/80">{row.feature}</td>
                     <td className="p-4 text-center">
-                      {row.krea ? <Check className="mx-auto h-5 w-5 text-primary" /> : <span className="text-muted-foreground/30">—</span>}
+                      {row.krea ? <Check className="mx-auto h-5 w-5 text-primary" /> : <span className="text-muted-foreground/30"> - </span>}
                     </td>
                     <td className="p-4 text-center">
-                      {row.selar ? <Check className="mx-auto h-5 w-5 text-foreground/40" /> : <span className="text-muted-foreground/30">—</span>}
+                      {row.selar ? <Check className="mx-auto h-5 w-5 text-foreground/40" /> : <span className="text-muted-foreground/30"> - </span>}
                     </td>
                     <td className="p-4 text-center">
-                      {row.gumroad ? <Check className="mx-auto h-5 w-5 text-foreground/40" /> : <span className="text-muted-foreground/30">—</span>}
+                      {row.gumroad ? <Check className="mx-auto h-5 w-5 text-foreground/40" /> : <span className="text-muted-foreground/30"> - </span>}
                     </td>
                   </tr>
                 ))}

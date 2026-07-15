@@ -1,4 +1,4 @@
-// Krea — Pure crypto helpers (no Next.js deps, safe to import from scripts)
+// Krea : Pure crypto helpers (no Next.js deps, safe to import from scripts)
 import crypto from "crypto";
 
 const ALG = "sha256";

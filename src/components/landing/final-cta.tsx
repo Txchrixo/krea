@@ -78,7 +78,7 @@ export function FinalCTA() {
         style={{ y: textY }}
         className="relative mx-auto max-w-3xl px-4 py-28 text-center sm:py-36"
       >
-        {/* Headline — word-by-word reveal */}
+        {/* Headline : word-by-word reveal */}
         <h2 className="font-heading text-4xl font-700 leading-[1.05] text-[#FBF5E3] sm:text-6xl">
           <motion.span
             initial={{ opacity: 0, y: 30 }}

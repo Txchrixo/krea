@@ -89,7 +89,7 @@ export async function GET(
       watermark: {
         buyerName: buyer?.name || "Client",
         buyerEmail: buyer?.email || "",
-        orderRef: license.order?.ref || "—",
+        orderRef: license.order?.ref || " - ",
         date: license.createdAt.toISOString(),
       },
     });

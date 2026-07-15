@@ -8,7 +8,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 /* ───────────────────────── 3 PILLARS ─────────────────────────
-   Editorial framed cards — big numeral, clean content, hover glow. */
+   Editorial framed cards : big numeral, clean content, hover glow. */
 
 interface Pillar {
   num: string;
@@ -89,7 +89,7 @@ function PillarFrame({ pillar, index }: { pillar: Pillar; index: number }) {
         className="relative flex h-44 items-center justify-center overflow-hidden border-b border-border"
         style={{ backgroundColor: pillar.accent + "0d" }}
       >
-        {/* Giant numeral — engraved, shifts on hover */}
+        {/* Giant numeral : engraved, shifts on hover */}
         <span
           className="pointer-events-none absolute select-none font-heading font-700 leading-none transition-transform duration-500"
           style={{

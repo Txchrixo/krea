@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Navigation progress bar — thin animated bar at the top of the page.
+ * Navigation progress bar : thin animated bar at the top of the page.
  * Triggered by any fetch request (intercepted globally).
  * Discreet, professional, non-blocking. Similar to NProgress.
  *
@@ -53,7 +53,7 @@ export function NavigationProgress() {
   useEffect(() => {
     const onChange = () => {
       if (activeRequests > 0) {
-        // Request started — show bar and animate to 90%
+        // Request started : show bar and animate to 90%
         clearTimers();
         setVisible(true);
         setProgress(30);
@@ -61,7 +61,7 @@ export function NavigationProgress() {
           setProgress((p) => (p < 90 ? p + Math.random() * 8 : p));
         }, 300);
       } else {
-        // All requests done — fill to 100% then hide
+        // All requests done : fill to 100% then hide
         clearTimers();
         setProgress(100);
         timeoutRef.current = setTimeout(() => {

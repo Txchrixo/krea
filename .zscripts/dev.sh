@@ -143,7 +143,7 @@ log_step_end "Waiting for Next.js dev server"
 log_step_start "Health check"
 echo "[BUN] Performing health check (this pre-warms the server, may take a while on first run)..."
 curl -fsS --max-time 120 localhost:3000 >/dev/null
-echo "[BUN] Health check passed — server is warm"
+echo "[BUN] Health check passed : server is warm"
 log_step_end "Health check"
 
 start_mini_services

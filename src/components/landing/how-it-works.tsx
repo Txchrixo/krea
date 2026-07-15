@@ -10,7 +10,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 /* ───────────────────────── HOW IT WORKS ─────────────────────────
-   Editorial step sequence — typographic, clean, with subtle 3D depth
+   Editorial step sequence : typographic, clean, with subtle 3D depth
    via CSS perspective. No custom SVG illustrations, no gimmicks. */
 
 interface Step {
@@ -41,7 +41,7 @@ export function HowItWorksSection() {
           subtitle={t("how.subtitle")}
         />
 
-        {/* Step sequence — book-shaped cards with 3D depth */}
+        {/* Step sequence : book-shaped cards with 3D depth */}
         <div
           className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
           style={{ transformStyle: "preserve-3d" }}
@@ -75,7 +75,7 @@ export function HowItWorksSection() {
                     borderColor: isActive ? "transparent" : "var(--border)",
                   }}
                 >
-                  {/* Book spine — left edge with gradient + binding lines */}
+                  {/* Book spine : left edge with gradient + binding lines */}
                   <div
                     className="absolute left-0 top-0 h-full w-3"
                     style={{
@@ -89,7 +89,7 @@ export function HowItWorksSection() {
                     <div className="absolute left-1 top-3/4 h-px w-2 bg-black/20" />
                   </div>
 
-                  {/* Content — offset right to leave room for spine */}
+                  {/* Content : offset right to leave room for spine */}
                   <div className="flex h-full flex-col p-5 pl-7">
                     {/* Numeral + accent dot */}
                     <div className="flex items-start justify-between">
@@ -128,7 +128,7 @@ export function HowItWorksSection() {
                       {t(s.desc)}
                     </p>
 
-                    {/* Detail — bottom, fades in on hover (desktop), always visible (mobile) */}
+                    {/* Detail : bottom, fades in on hover (desktop), always visible (mobile) */}
                     <div className="mt-auto pt-3">
                       <p
                         className={cn(
@@ -142,7 +142,7 @@ export function HowItWorksSection() {
                     </div>
                   </div>
 
-                  {/* Page edge — right side subtle line for book thickness effect */}
+                  {/* Page edge : right side subtle line for book thickness effect */}
                   <div
                     className="absolute right-0 top-2 bottom-2 w-px"
                     style={{ background: isActive ? s.accent + "30" : "var(--border)" }}

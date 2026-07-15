@@ -62,7 +62,7 @@ export async function GET() {
       o.ebook.title,
       o.buyer.name || "Client",
       o.buyer.email,
-      o.buyer.country || "—",
+      o.buyer.country || " - ",
       o.amount,
       o.platformFee,
       o.creatorEarning,

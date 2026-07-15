@@ -229,7 +229,7 @@ export function EbookDetailView() {
                   <Meta label="Pages" value={String(ebook.pageCount)} icon={BookOpen} />
                   <Meta label="Mots" value={formatNumber(ebook.wordCount)} icon={BookOpen} />
                   <Meta label="Langue" value={ebook.language === "fr" ? "Français" : ebook.language} icon={Globe} />
-                  <Meta label="Publié" value={ebook.publishedAt ? formatDate(ebook.publishedAt) : "—"} icon={Clock} />
+                  <Meta label="Publié" value={ebook.publishedAt ? formatDate(ebook.publishedAt) : " - "} icon={Clock} />
                 </div>
               </TabsContent>
 

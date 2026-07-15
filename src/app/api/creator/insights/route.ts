@@ -97,7 +97,7 @@ export async function GET() {
         recentReadersMap.set(s.userId, {
           name: s.user.name || "Lecteur",
           email: s.user.email,
-          country: s.user.country || "—",
+          country: s.user.country || " - ",
           ebookTitle: s.ebook.title,
           date: s.startedAt.toISOString(),
         });

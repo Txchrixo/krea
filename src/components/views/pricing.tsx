@@ -157,7 +157,7 @@ export function PricingView() {
         <div className="mt-16">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: ShieldCheck, title: "Protection incluse", desc: "Watermark social, aplatissement, stéganographie — sur tous les plans." },
+              { icon: ShieldCheck, title: "Protection incluse", desc: "Watermark social, aplatissement, stéganographie : sur tous les plans." },
               { icon: Wallet, title: "Wallet temps réel", desc: "Vos ventes tombent instantanément. Retrait dès 10 000 F en 24h." },
               { icon: BookOpen, title: "Éditeur intégré", desc: "Écrivez chapitre par chapitre, sans logiciel externe." },
               { icon: Globe, title: "Mobile Money", desc: "MTN, Orange, Wave. FCFA sans conversion." },

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * PageFrame — two fixed vertical lines that delimit the max-w-6xl (1152px) content frame.
+ * PageFrame : two fixed vertical lines that delimit the max-w-6xl (1152px) content frame.
  * Visible on lg+ screens where there is enough side margin.
  */
 export function PageFrame() {

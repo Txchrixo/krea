@@ -58,7 +58,7 @@ export async function GET() {
         name: u.name || "Sans nom",
         email: u.email,
         role: u.role,
-        country: u.country || "—",
+        country: u.country || " - ",
         createdAt: u.createdAt.toISOString(),
       })),
       orders: recentOrders.map((o) => ({

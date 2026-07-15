@@ -331,7 +331,7 @@ export function EditorView() {
                 </div>
                 <div className="space-y-1">
                   <Label className="text-xs">Prix barré</Label>
-                  <Input type="number" value={compareAt} onChange={(e) => setCompareAt(e.target.value)} placeholder="—" />
+                  <Input type="number" value={compareAt} onChange={(e) => setCompareAt(e.target.value)} placeholder=" - " />
                 </div>
               </div>
               <div className="space-y-1">

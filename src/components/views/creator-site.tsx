@@ -942,7 +942,7 @@ function SiteFooter({
                 })}
               </div>
             ) : (
-              <p className="text-sm" style={{ color: theme.muted }}>—</p>
+              <p className="text-sm" style={{ color: theme.muted }}> - </p>
             )}
           </div>
         </div>

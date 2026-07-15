@@ -222,7 +222,7 @@ export function PurchaseModal() {
                   <div className="mb-3 space-y-1 text-sm">
                     <div className="flex items-center justify-between text-muted-foreground">
                       <span>Sous-total</span>
-                      <span className="line-through">{ebook ? formatFCFA(ebook.price) : "—"}</span>
+                      <span className="line-through">{ebook ? formatFCFA(ebook.price) : " - "}</span>
                     </div>
                     <div className="flex items-center justify-between text-primary">
                       <span>Réduction (-{appliedCoupon.percentOff}%)</span>
@@ -237,7 +237,7 @@ export function PurchaseModal() {
                   <div className="mb-3 flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">Total à payer</span>
                     <span className="font-heading text-xl font-600 text-foreground">
-                      {ebook ? formatFCFA(ebook.price) : "—"}
+                      {ebook ? formatFCFA(ebook.price) : " - "}
                     </span>
                   </div>
                 )}
@@ -282,7 +282,7 @@ export function PurchaseModal() {
                   <div className="mt-1.5 space-y-1 text-xs text-muted-foreground">
                     <div className="flex justify-between">
                       <span>Ebook</span>
-                      <span className="text-foreground">{ebook ? formatFCFA(finalPrice) : "—"}</span>
+                      <span className="text-foreground">{ebook ? formatFCFA(finalPrice) : " - "}</span>
                     </div>
                     {appliedCoupon && (
                       <div className="flex justify-between text-primary">
@@ -296,7 +296,7 @@ export function PurchaseModal() {
                     </div>
                     <div className="mt-1 flex justify-between border-t border-border pt-1.5">
                       <span className="font-600 text-foreground">Total</span>
-                      <span className="font-heading font-600 text-foreground">{ebook ? formatFCFA(finalPrice) : "—"}</span>
+                      <span className="font-heading font-600 text-foreground">{ebook ? formatFCFA(finalPrice) : " - "}</span>
                     </div>
                   </div>
                 </div>

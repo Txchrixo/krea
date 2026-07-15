@@ -59,7 +59,7 @@ export async function GET() {
       createdAt: o.createdAt.toISOString(),
     }));
 
-    // monthly data — last 6 months
+    // monthly data : last 6 months
     const now = new Date();
     const months: { month: string; revenue: number; sales: number }[] = [];
     for (let i = 5; i >= 0; i--) {

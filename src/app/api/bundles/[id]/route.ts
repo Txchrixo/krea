@@ -50,7 +50,7 @@ export async function GET(
   }
 }
 
-// Purchase a bundle — creates a license for each ebook in the bundle
+// Purchase a bundle : creates a license for each ebook in the bundle
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

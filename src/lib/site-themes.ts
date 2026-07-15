@@ -1,4 +1,4 @@
-// Creator site theme presets — shared by public site view + editor
+// Creator site theme presets : shared by public site view + editor
 import type { ThemePreset, FontPreset, LayoutPreset } from "./types";
 
 export interface ThemeTokens {

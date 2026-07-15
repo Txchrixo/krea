@@ -143,7 +143,7 @@ export function AuthView() {
 
   return (
     <div className="flex min-h-screen bg-background">
-      {/* Left — brand / visual panel with real photo */}
+      {/* Left : brand / visual panel with real photo */}
       <div className="relative hidden w-1/2 overflow-hidden bg-[#1F4A2E] lg:block">
         <img
           src="https://sfile.chatglm.cn/images-ppt/66a6160a65c6.jpg"
@@ -213,7 +213,7 @@ export function AuthView() {
         <div className="absolute right-0 top-0 z-20 h-full w-8 bg-gradient-to-l from-black/20 to-transparent" />
       </div>
 
-      {/* Right — form panel */}
+      {/* Right : form panel */}
       <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2">
         <div className="w-full max-w-sm">
           {/* mobile logo + lang */}
@@ -253,7 +253,7 @@ export function AuthView() {
 
           {/* form */}
           <form onSubmit={submit} className="mt-8 space-y-4">
-            {/* Role toggle — only on register, above name field */}
+            {/* Role toggle : only on register, above name field */}
             {mode === "register" && (
               <div className="relative flex h-10 w-full items-stretch overflow-hidden rounded-md border border-border bg-muted/50">
                 <motion.div

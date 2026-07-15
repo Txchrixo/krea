@@ -104,7 +104,7 @@ export function CreatorSitesSection() {
             </div>
           </div>
 
-          {/* Browser mockup — fixed 1080×620 with scrollable site inside */}
+          {/* Browser mockup : fixed 1080×620 with scrollable site inside */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +112,7 @@ export function CreatorSitesSection() {
             transition={{ duration: 0.5 }}
             className="mx-auto w-full max-w-[1080px] overflow-hidden rounded-2xl border border-border bg-card"
           >
-            {/* Browser bar — compact */}
+            {/* Browser bar : compact */}
             <div className="flex items-center gap-2 border-b border-border bg-muted/60 px-3 py-1.5">
               <div className="flex gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
@@ -125,7 +125,7 @@ export function CreatorSitesSection() {
               </div>
             </div>
 
-            {/* Scrollable site preview — fills remaining height to total 620px */}
+            {/* Scrollable site preview : fills remaining height to total 620px */}
             <div
               className="relative h-[587px] overflow-y-auto"
               style={{
@@ -142,7 +142,7 @@ export function CreatorSitesSection() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
                 >
-                  {/* ── Masthead — magazine colophon style ── */}
+                  {/* ── Masthead : magazine colophon style ── */}
                   <div
                     className="sticky top-0 z-20 border-b backdrop-blur-md"
                     style={{ borderColor: theme.border, backgroundColor: theme.surface + "f2" }}
@@ -171,7 +171,7 @@ export function CreatorSitesSection() {
                     </div>
                   </div>
 
-                  {/* ── Hero — editorial, asymmetric, bleeding headline ── */}
+                  {/* ── Hero : editorial, asymmetric, bleeding headline ── */}
                   <div className="relative overflow-hidden">
                     <div className="grid grid-cols-12 gap-0">
                       {/* Left: massive headline column */}
@@ -251,7 +251,7 @@ export function CreatorSitesSection() {
                     </div>
                   </div>
 
-                  {/* ── Index of works — editorial list, not a card grid ── */}
+                  {/* ── Index of works : editorial list, not a card grid ── */}
                   <div className="px-6 py-8 sm:px-10 sm:py-10">
                     <div className="mb-6 flex items-baseline justify-between">
                       <h4
@@ -314,7 +314,7 @@ export function CreatorSitesSection() {
                     </div>
                   </div>
 
-                  {/* ── Pull quote — oversized mark, asymmetric ── */}
+                  {/* ── Pull quote : oversized mark, asymmetric ── */}
                   <div className="relative overflow-hidden px-6 py-12 sm:px-10" style={{ backgroundColor: theme.bgAlt }}>
                     <span
                       className="pointer-events-none absolute -top-4 left-3 font-heading text-[100px] leading-none"
@@ -338,7 +338,7 @@ export function CreatorSitesSection() {
                     </div>
                   </div>
 
-                  {/* ── Colophon / about — signed, editorial ── */}
+                  {/* ── Colophon / about : signed, editorial ── */}
                   <div className="grid grid-cols-12 gap-6 px-6 py-10 sm:px-10">
                     <div className="col-span-12 sm:col-span-4">
                       <span className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.muted }}>
@@ -365,7 +365,7 @@ export function CreatorSitesSection() {
                     </div>
                   </div>
 
-                  {/* ── Footer — minimal colophon line ── */}
+                  {/* ── Footer : minimal colophon line ── */}
                   <div
                     className="border-t px-6 py-5 sm:px-10"
                     style={{ borderColor: theme.border, backgroundColor: theme.surface }}

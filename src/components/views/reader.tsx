@@ -255,7 +255,7 @@ export function ReaderView() {
   }
 
   // apply highlights inline by modifying the HTML string before render
-  // (no DOM manipulation needed — highlights are baked into the HTML)
+  // (no DOM manipulation needed : highlights are baked into the HTML)
 
   if (loading) {
     return (
@@ -441,7 +441,7 @@ export function ReaderView() {
           />
         </article>
 
-        {/* Watermark banner — visible reminder */}
+        {/* Watermark banner : visible reminder */}
         <div
           className="mt-10 flex items-center gap-2 rounded-lg border border-dashed p-3 text-xs"
           style={{ borderColor: "rgba(31,74,46,0.2)", background: "rgba(255,216,107,0.1)" }}

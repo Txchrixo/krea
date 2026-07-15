@@ -46,7 +46,7 @@
 
 :root {
   --radius: 0.625rem;
-  /* Krea palette — cream / forest / mint / yellow */
+  /* Krea palette : cream / forest / mint / yellow */
   --background: #FBF5E3;
   --foreground: #1F4A2E;
   --card: #FFFCF1;
@@ -127,8 +127,8 @@
   }
 }
 
-/* Custom scrollbar — Krea branded, applied globally via webkit pseudo-elements only.
-   IMPORTANT: do NOT set `scrollbar-width` / `scrollbar-color` on html/body —
+/* Custom scrollbar : Krea branded, applied globally via webkit pseudo-elements only.
+   IMPORTANT: do NOT set `scrollbar-width` / `scrollbar-color` on html/body .
    in Chromium 121+ those standard properties put the element in "native scrollbar"
    mode and make `::-webkit-scrollbar` rules be IGNORED, which produces a different
    (thinner) scrollbar on the page vs inner scroll panels. Keeping ONLY the webkit

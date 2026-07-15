@@ -1,4 +1,4 @@
-// Krea — Ebook mappers (DB rows → frontend types)
+// Krea : Ebook mappers (DB rows → frontend types)
 import type {
   EbookCard,
   EbookDetail,
