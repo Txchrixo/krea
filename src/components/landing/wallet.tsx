@@ -23,9 +23,9 @@ import { formatFCFA } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const PAYMENT_METHODS = [
-  { id: "MTN", label: "MTN MoMo", logo: "", color: "#FFCC00" },
-  { id: "ORANGE", label: "Orange Money", logo: "", color: "#FF7900" },
-  { id: "WAVE", label: "Wave", logo: "", color: "#1DC8FF" },
+  { id: "MTN", label: "MTN MoMo", logo: "https://sfile.chatglm.cn/images-ppt/00f22f15b671.svg", color: "#FFCC00" },
+  { id: "ORANGE", label: "Orange Money", logo: "https://sfile.chatglm.cn/images-ppt/9b83ee7d8fa7.png", color: "#FF7900" },
+  { id: "WAVE", label: "Wave", logo: "https://sfile.chatglm.cn/images-ppt/90f56ebdbd7a.png", color: "#1DC8FF" },
   { id: "CARD", label: "Carte bancaire", logo: "", color: "#1F4A2E" },
 ];
 

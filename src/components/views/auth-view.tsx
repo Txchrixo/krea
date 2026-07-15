@@ -143,9 +143,13 @@ export function AuthView() {
 
   return (
     <div className="flex min-h-screen bg-background">
-      {/* Left : brand / visual panel */}
+      {/* Left : brand / visual panel with real photo */}
       <div className="relative hidden w-1/2 overflow-hidden bg-[#1F4A2E] lg:block">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1F4A2E] via-[#243b2b] to-[#0F2A18]" />
+        <img
+          src="https://sfile.chatglm.cn/images-ppt/66a6160a65c6.jpg"
+          alt="Entrepreneuse africaine"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1F4A2E] via-[#1F4A2E]/70 to-[#1F4A2E]/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1F4A2E]/60 to-transparent" />
 
