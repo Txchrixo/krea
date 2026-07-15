@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Krea est la librairie digitale personnalisée et protégée pour créateurs africains. Créez vos ebooks, vendez-les via Mobile Money, et faites lire vos clients dans une bibliothèque sécurisée.",
   keywords: ["Krea", "ebook", "Afrique", "Mobile Money", "Selar alternative", "lecture protégée", "créateurs", "CFA"],
   authors: [{ name: "Krea" }],
-  icons: { icon: "/logo.svg" },
+  icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "Krea : La librairie digitale des créateurs africains",
     description: "Créez, vendez et protégez vos ebooks sur une seule plateforme.",
